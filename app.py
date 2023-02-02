@@ -74,11 +74,11 @@ def exec_proc(proc_name):
     #see if we can execute it..
     resp = ""
     try:
-        print('try')
+        #print('try') test
         fn = getattr(__import__('open_calls.'+proc_name), proc_name)
         resp = fn.handle_request()
     except Exception as err:
-        print('err')
+        #print('err') print test
         ex_data = str(Exception) + '\n'
         ex_data = ex_data + str(err) + '\n'
         ex_data = ex_data + traceback.format_exc()
