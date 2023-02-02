@@ -72,7 +72,7 @@ def exec_proc(proc_name):
     init_new_env()
 
     #see if we can execute it..
-    resp ="HELLOOOOO" #""
+    resp =""
     try:
         fn = getattr(__import__('open_calls.'+proc_name), proc_name)
         resp = fn.handle_request()
