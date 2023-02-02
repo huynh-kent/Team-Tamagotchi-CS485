@@ -8,5 +8,5 @@ with open('config.yml', 'r') as yml_file:
 
 
 def handle_request():
-    print(request.form['Body'])
+    print(request.form['body'])
     return json_response( status = "ok" )
