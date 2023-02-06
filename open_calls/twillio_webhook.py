@@ -9,11 +9,7 @@ with open('config.yml', 'r') as yml_file:
 
 def handle_request():
     print(request.form['Body']) # prints incoming message
-    ### test
-    print(request.form)
-    form = request.form
-    for line in form:
-        for key in line:
-            print(f'{line}   -----   {key}')
-    ###
+
+    print(request.form) # prints info form
+
     return json_response( status = "ok" )
