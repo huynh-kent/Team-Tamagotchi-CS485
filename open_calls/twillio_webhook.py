@@ -13,6 +13,6 @@ def handle_request():
     print(request.form)
     form = request.form
     for line in form:
-        print(line)
+        print(f'{line[0]}   -----   {line[1]}')
     ###
     return json_response( status = "ok" )
