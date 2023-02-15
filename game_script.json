@@ -1,0 +1,12 @@
+{
+  "init" : {
+              "content": "Hello!"
+              "next_state": "choose"
+  }
+  
+  "choose" : {
+              "content" : "Choose Your Pet(Dog, Cat):"
+               "next_state": "name"
+}
+  
+}
