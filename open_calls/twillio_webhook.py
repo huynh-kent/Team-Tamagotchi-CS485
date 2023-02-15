@@ -7,6 +7,7 @@ from tools.logging import logger
 import random
 import json
 import pickle
+import os
 
 yml_configs = {}
 BODY_MSGS = []
@@ -23,7 +24,7 @@ def handle_request():
 
     # pickling
     act = None
-    if exists(f"users/{request.form['From']}.pkl"):
+    if os.path.exists(f"users/{request.form['From']}.pkl"):
         with open(f"users/{request.form['From']}.pkl", 'rb') as p:
             actor = pickle.load(p)
     else:
