@@ -1,0 +1,8 @@
+{
+  "init" : {
+              "content": "Hello!
+              "next_state": "choose"
+  }
+  
+  
+}
