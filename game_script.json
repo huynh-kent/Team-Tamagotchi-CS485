@@ -1,7 +1,7 @@
 {
   "init" : {
-              "content": "Hello!
-              "next_state": "choose"
+              "content": "Hello!"
+              "next_state": "Choose Your Pet(Dog, Cat):"
   }
   
   
