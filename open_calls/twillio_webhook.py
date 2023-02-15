@@ -3,9 +3,7 @@ from flask import request, g
 from flask_json import FlaskJSON, JsonError, json_response, as_json
 
 from tools.logging import logger
-#from things.actors import actor
-import things
-
+from actors import actor
 import random
 import json
 import pickle
@@ -30,7 +28,7 @@ def handle_request():
         with open(f"users/{request.form['From']}.pkl", 'rb') as p:
             act = pickle.load(p)
     else:
-        act = things.actors.actor(request.form['From'])
+        act = actor(request.form['From'])
 
     act.save_msg(request.form['Body'])
     logger.debug(act.prev_msgs)
