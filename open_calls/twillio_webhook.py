@@ -14,13 +14,15 @@ BODY_MSGS = []
 with open('config.yml', 'r') as yml_file:
     yml_configs = yaml.safe_load(yml_file)
 
-# corpus 
 CORPUS = {}
+
 with open('chatbot_corpus.json', 'r') as myfile:
     CORPUS = json.loads(myfile.read())
 
 def handle_request():
-    logger.debug(request.form)
+    # user info
+    #logger.debug(request.form)
+    logger.debug(request.form['From'])
 
     # pickling
     act = None
@@ -29,25 +31,23 @@ def handle_request():
             act = pickle.load(p)
     else:
         act = actor(request.form['From'])
-
     act.save_msg(request.form['Body'])
     logger.debug(act.prev_msgs)
-    with open(f"user/{request.form['Form']}.pkl", 'wb') as p:
+    with open(f"users/{request.form['From']}.pkl", 'wb') as p:
         pickle.dump(act,p)
 
-    response = 'response here'
-
-    # checking if input in corpus
+    # corpus
     sent_input = str(request.form['Body']).lower()
     if sent_input in CORPUS['input']:
         response = random.choice(CORPUS['input'][sent_input])
     else:
         CORPUS['input'][sent_input] = ['DID NOT FIND']
         with open('chatbot_corpus.json', 'w') as myfile:
-            myfile.write(json.dumps(CORPUS, indent=4))
+            myfile.write(json.dumps(CORPUS, indent=4 ))
 
+    # response back
+    response = 'response here'
     logger.debug(response)
-
     message = g.sms_client.messages.create(
                      body=response,
                      from_=yml_configs['twillio']['phone_number'],
