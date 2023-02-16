@@ -1,1 +1,1 @@
-ssh -i keys/cs485.pem ubuntu@3.101.19.210
+ssh -i ~/Desktop/keys/cs485.pem ubuntu@3.101.19.210
