@@ -1,5 +1,5 @@
 {
-  "init" : {
+  "begin" : {
               "content": "Working!",
               "next_state": "choose"
   },
