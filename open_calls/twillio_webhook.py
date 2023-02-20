@@ -1,11 +1,3 @@
-import yaml
-from flask import request, g
-from flask_json import FlaskJSON, JsonError, json_response, as_json
-
-from tools.logging import logger
-from actors import actor
-import random
-import json
 import pickle
 import os
 
@@ -30,26 +22,24 @@ def handle_request():
     if os.path.exists(f"users/{request.form['From']}.pkl"):
         with open(f"users/{request.form['From']}.pkl", 'rb') as p:
             act = pickle.load(p)
-            response = 'already used number'
-            logger.debug('current state:')
-            logger.debug(act.state)
+            response = (CORPUS[act.state]['content'])
     else:
         act = actor(request.form['From'])
-        response = (CORPUS['init']['content'])
-        logger.debug('current state:')
-        logger.debug(act.state)
+        response = (CORPUS['begin']['content'])
         first_time = True
     act.save_msg(request.form['Body'])
     logger.debug(act.prev_msgs)
+    act.state = (CORPUS[act.state]['next_state'])
     with open(f"users/{request.form['From']}.pkl", 'wb') as p:
         pickle.dump(act,p)
+    logger.debug('current state:')
+    logger.debug(act.state)
 
     # corpus
-    ####if first_time = false:    #on our first time, we have already deter
       #### state =
        #### response = (CORPUS[state]
 
-        """
+    """
         sent_input = str(request.form['Body']).lower()
         if sent_input in CORPUS['input']:
             response = random.choice(CORPUS['input'][sent_input])
@@ -60,16 +50,14 @@ def handle_request():
         """
 
    #  response back
-  ## response = 'response here'
+   ## response = 'response here'
 
     logger.debug(response)
     message = g.sms_client.messages.create(
-                     body=response,
-                     from_=yml_configs['twillio']['phone_number'],
-                     to=request.form['From'])
-
+                    body=response,
+                    from_=yml_configs['twillio']['phone_number'],
+                    to=request.form['From'])
     return json_response( status = "ok" )
-
 
 # tamagotchi outline
 tamagotchi_outline = """                     🌸🌸🌸
@@ -92,4 +80,5 @@ tamagotchi_outline = """                     🌸🌸🌸
                                                                                                      🌸🌸🌸🌸🌸🌸
                                                                                                                                          🌸🌸🌸🌸"""
 
+                                                                                                                                                                                                      90,0-1        Bot
                                                                                                                                                                                                       94,0-1        Bot
