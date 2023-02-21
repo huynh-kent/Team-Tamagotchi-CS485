@@ -2,7 +2,6 @@ import os
 import time
 import sched
 import threading
-import inquirer
 
 class Tamagotchi:
     age = 0
