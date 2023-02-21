@@ -35,5 +35,6 @@ class drink:
         self.emoji = emoji
         self.thirst = thirst
 
+# testing
 drink_test = drinks()
 drink_test.give_drink_choices()
