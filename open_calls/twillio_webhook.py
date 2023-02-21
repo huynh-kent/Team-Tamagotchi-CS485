@@ -7,6 +7,8 @@ from pickles import pickling
 from send_message_back import send_message, send_picture
 from processing_message import process_message
 
+from tamagotchi import get_outline # test
+
 yml_configs = {}
 BODY_MSGS = []
 with open('config.yml', 'r') as yml_file:
@@ -32,6 +34,7 @@ def handle_request():
     sent_input = str(request.form['Body']).lower()
     response = process_message(sent_input)
 
-
+    # test
+    send_message(request.form, get_outline())
 
     return json_response( status = "ok" )
