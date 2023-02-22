@@ -1,8 +1,7 @@
 from flask import request, g
 from flask_json import FlaskJSON, JsonError, json_response, as_json
 from tools.logging import logger
-
-from pickles import pickling, save_pickle
+from pickles import pickling, save_pickle, pickle
 from send_message_back import send_message, send_picture
 from processing_message import process_message
 
@@ -11,8 +10,10 @@ scheduler = BackgroundScheduler()
 def time_passed(user):
     user.tamagotchi.time_tick()
     return user
-scheduler.add_job(lambda: time_passed(user), trigger="interval", seconds=10)
-scheduler.start()
+
+def delayed_pickle(user):
+    with open(f"users/{user.phone}.pkl", 'wb') as p:
+        pickle.dump(user,p)
 
 ### Main
 def handle_request():
@@ -38,6 +39,12 @@ def handle_request():
     #send_message(request.form, get_tamagotchi())
 
     # save pickle/user
-    save_pickle(user)
+    #save_pickle(user)
+
+    # delayed pickle
+    scheduler.add_job(lambda: delayed_pickle(user), trigger="interval", seconds=360, max_instances=1)
+    if user.tamagotchi is not None:
+        scheduler.add_job(lambda: time_passed(user), trigger="interval", seconds=10)
+    scheduler.start()
 
     return json_response( status = "ok" )
