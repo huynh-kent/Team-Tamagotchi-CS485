@@ -4,6 +4,7 @@ from tools.logging import logger
 from pets_ import pets
 import sched
 import time
+from send_message_back import send_message
 
 
 # open corpus json
@@ -26,7 +27,8 @@ def process_message(user, sent_input):
     elif user.state == 'name':
         chosen_pet = pet_choices.pet_options[int(sent_input)-1]
         user.create_tamagotchi(chosen_pet)
-        content = CORPUS[user.state]['content']
+        send_message(user.phone, chosen_pet)
+        content = f"{(CORPUS[user.state]['content'])}"
     elif user.state == 'confirmation':
         if user.prev_state == 'choose':
             pass
