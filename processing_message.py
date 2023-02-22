@@ -49,9 +49,14 @@ def process_message(user, sent_input):
         content = "Please try again"
         
     if user.state == 'idle':
-        send_message(user.phone, user.tamagotchi.draw())
-        send_message(user.phone, congrats)
-        content = CORPUS[user.state]['content']
+        if sent_input not in CORPUS['idle']['response']:
+            send_message(user.phone, user.tamagotchi.draw())
+            try: send_message(user.phone, congrats) 
+            except: pass
+            content = CORPUS[user.state]['content']
+        else:
+            user.state = sent_input
+            
 
 
     #elif sent_input in CORPUS[user.state]['response']:
