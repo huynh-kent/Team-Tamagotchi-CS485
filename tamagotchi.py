@@ -1,11 +1,11 @@
 class Tamagotchi:
     age = 0
-    happiness = 100
-    hunger = 100
-    thirst = 100
+    happiness: int = 100
+    hunger: int = 100
+    thirst: int = 100
     alive = True
-    bored = 0
-    energy = 100
+    bored: int = 0
+    energy: int = 100
     name = ''
 
     def __init__(self, emoji):
