@@ -5,7 +5,6 @@ from pets_ import pets
 import sched
 from send_message_back import send_message
 import time
-from apscheduler.schedulers.background import BackgroundScheduler
 
 
 # open corpus json
@@ -14,11 +13,6 @@ with open('game_script.json', 'r') as myfile:
     CORPUS = json.loads(myfile.read())
 
 pet_choices = pets()
-
-scheduler = BackgroundScheduler()
-def time_passed(user):
-    user.tamagotchi.time_tick()
-    return user
 
 def process_message(user, sent_input):
     user.prev_state = user.state
@@ -34,8 +28,6 @@ def process_message(user, sent_input):
     elif user.state == 'name':
         user.create_tamagotchi(pet_choices.pet_options[int(sent_input)-1])
         send_message(user.phone, user.tamagotchi.emoji)
-        scheduler.add_job(lambda: time_passed(user=user), trigger="interval", seconds=10)
-        scheduler.start()
         content = CORPUS[user.state]['content']
     elif user.state == 'confirmation':
         user.tamagotchi.name = sent_input
