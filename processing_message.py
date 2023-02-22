@@ -23,15 +23,19 @@ def process_message(user, sent_input):
 
     if user.state == 'begin':
         content = CORPUS[user.state]['content']
+
     elif user.state == 'choose':
         content = f"{(CORPUS[user.state]['content'])+(pet_choices.show_choices())}"
+
     elif user.state == 'name':
         user.create_tamagotchi(pet_choices.pet_options[int(sent_input)-1])
         send_message(user.phone, user.tamagotchi.emoji)
         content = CORPUS[user.state]['content']
+
     elif user.state == 'confirmation':
         user.tamagotchi.name = sent_input.upper()
         content = f"{(user.tamagotchi.name)+(CORPUS[user.state]['content'])}"
+        
     elif user.state == 'congratulations':
         if sent_input == 'no':
             user.state = user.prev_state

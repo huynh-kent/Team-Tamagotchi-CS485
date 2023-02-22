@@ -10,6 +10,7 @@ def handle_request():
     # user info
     #logger.debug(request.form)
     logger.debug(f"Phone#: {request.form['From']}")
+    
     # get user - pickling from pickles.py 
     user = pickling(request.form)
     
