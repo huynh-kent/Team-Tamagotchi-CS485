@@ -15,7 +15,7 @@ class Tamagotchi:
             """Limits input 'num' between minimum and maximum values.
             Default minimum value is 1 and maximum value is 255."""
             return max(min(num, maximum), minimum)
-        map(num_limit(), var_list)
+        map(num_limit, var_list)
 
     def eating(self, food):
         self.hunger += food.hunger
