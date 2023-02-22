@@ -19,7 +19,7 @@ def process_message(user, sent_input):
     user.prev_state = user.state
     user.state = CORPUS[user.state]['next_state']   
 
-    if CORPUS[user.prev_state]['response'] is not None and sent_input not in CORPUS[user.prev_state]['response']:
+    if 'response' in CORPUS[user.prev_state] and sent_input not in CORPUS[user.prev_state]['response']:
         user.state = user.prev_state
 
     if user.state == 'begin':
