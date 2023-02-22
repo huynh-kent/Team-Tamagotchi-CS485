@@ -45,7 +45,41 @@
                 "play",
                 "sleep"
               ]
+  },
+
+  "shop": {
+          "content": "Are you looking for Drinks or Food?",
+          "response": [
+            "drinks",
+            "food"
+          ]
+  },
+  "drinks": {
+          "content": "Which drink would you like?",
+          "next_state": "idle",
+          "response": [
+            "1",
+            "2",
+            "3"
+          ]
+  },
+  "food": {
+          "content": "Which food item would you like?",
+          "next_state": "idle",
+          "response": [
+            "1",
+            "2",
+            "3"
+          ]
+  },
+
+  "clean": {
+
+  },
+  "play": {
+
+  },
+  "sleep": {
+
   }
-
-
 }
