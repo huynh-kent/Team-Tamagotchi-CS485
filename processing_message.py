@@ -40,16 +40,15 @@ def process_message(user, sent_input):
         else:
             content = f"{(CORPUS[user.state]['content'])+(user.tamagotchi.name)}! 🎉🎉🎉"
             user.state = 'idle'
-            pass
-    elif user.state == 'idle':
+    else:
+        content = "Please try again"
+    if user.state == 'idle':
         send_message(user.phone, user.tamagotchi.get_outline())
-        
+
 
     #elif sent_input in CORPUS[user.state]['response']:
     #    response = CORPUS[user.state]['response'][sent_input]
     #    user.state = CORPUS[user.state]['next_state']
-    else:
-        content = "Please try again"
 
     # check state
     logger.debug(user.state)
