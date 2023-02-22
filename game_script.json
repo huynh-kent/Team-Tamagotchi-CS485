@@ -1,11 +1,11 @@
 {
   "begin" : {
-              "content": "Working!",
+              "content": "Type BEGIN to Start!",
               "next_state": "choose"
   },
 
   "choose" : {
-              "content": "Choose Your Pet(Dog, Cat):",
+              "content": "Choose Your Pet(1, 2, 3):\n{pet_choices.show_choices()}",
               "next_state": "name",
               "response": {
                 "1": "1 selected",
@@ -19,8 +19,9 @@
               "next_state": "name_confirmation"
   },
 
-  "name_confirmation": {
-              "content": "Are you sure you want to name it"
+  "confirmation": {
+              "content": "Are you sure? (Yes or No)",
+              "response": ""
   },
 
   "idle" : {
