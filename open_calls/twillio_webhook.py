@@ -44,7 +44,10 @@ def handle_request():
     # time_tick
     if user.tamagotchi is not None:
         scheduler.add_job(lambda: time_passed(user), trigger="interval", seconds=10)
-    scheduler.start()
+    try:
+        scheduler.start()
+    except Exception:
+        print('scheduler running')
 
     # save pickle/user
     save_pickle(user)
