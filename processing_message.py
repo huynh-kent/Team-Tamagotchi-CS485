@@ -19,7 +19,6 @@ def process_message(user, sent_input):
 
     if user.state == 'begin':
         content = CORPUS[user.state]['content']
-        content = f"{content}"
     elif user.state == 'choose':
         pet_choices = pets()
         content = f"{(CORPUS[user.state]['content'])+(pet_choices.show_choices())}"
