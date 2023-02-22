@@ -16,7 +16,10 @@ def handle_request():
 
     # get user - pickling from pickles.py 
     user = pickling(request.form)
-
+    # get user - state
+    state = user.state
+    # 
+    
     # processing incoming message from processing_message.py
     sent_input = str(request.form['Body']).lower()
     response = process_message(sent_input)
@@ -31,5 +34,3 @@ def handle_request():
     #send_message(request.form, get_tamagotchi())
 
     return json_response( status = "ok" )
-
-print("main?")
