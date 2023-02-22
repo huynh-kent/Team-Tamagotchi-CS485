@@ -50,7 +50,7 @@ def get_outline():
     # tamagotchi outline
     tamagotchi_outline = """Hello, this is how your Tamagotchi is looking right now!
 \n
-                    🌸🌸🌸🌸🌸🌸
+                🌸🌸🌸🌸🌸🌸
          🌸🌸🌸🌸🌸🌸🌸🌸
       🌸🌸🌸🌸🌸🌸🌸🌸🌸
    🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
