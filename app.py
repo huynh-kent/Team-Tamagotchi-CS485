@@ -42,7 +42,7 @@ def time_has_passed():
             with open(f"users/{act.phone}.pkl", 'wb') as b:
                 pickle.dump(act,b)
         except Exception:
-            print("file already open")
+            print(f"{file} failed to pass time")
 # configure
 app.config['JOBS'] = [
     {
