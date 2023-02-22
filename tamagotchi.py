@@ -7,6 +7,7 @@ class Tamagotchi:
     bored: int = 0
     energy: int = 100
     name = ''
+    in_need = False
 
     def __init__(self, emoji):
         self.emoji = emoji
@@ -33,6 +34,7 @@ class Tamagotchi:
 
         if self.hunger < 50 or self.bored > 50 or self.thirst < 50:
             self.happiness -= 5
+            self.in_need = True
 
         if self.hunger <= 0 or self.bored >= 100 or self.thirst <= 0 or self.happiness <= 0:
             self.alive = False
