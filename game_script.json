@@ -58,7 +58,7 @@
 
   "drinks": {
           "content": "Which drink would you like?",
-          "next_state": "idle",
+          "next_state": "drinks",
           "response": [
             "1",
             "2",
@@ -68,7 +68,7 @@
 
   "food": {
           "content": "Which food item would you like?",
-          "next_state": "idle",
+          "next_state": "food",
           "response": [
             "1",
             "2",
