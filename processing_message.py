@@ -23,7 +23,9 @@ def process_message(user, sent_input):
         pet_choices = pets()
         content = f"{(CORPUS[user.state]['content'])+(pet_choices.show_choices())}"
     elif user.state == 'name':
-        pass
+        chosen_pet = pet_choices[int(sent_input)-1]
+        user.create_tamagotchi(chosen_pet)
+        content = CORPUS[user.state]['content']
     elif user.state == 'confirmation':
         if user.prev_state == 'choose':
             pass
