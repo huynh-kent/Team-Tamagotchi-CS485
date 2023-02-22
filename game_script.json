@@ -58,32 +58,23 @@
 
   "drinks": {
           "content": "Which drink would you like?",
-          "next_state": "drinking",
+          "next_state": "idle",
           "response": [
             "1",
             "2",
             "3"
           ]
-  },
-
-  "drinking": {
-          "content": "",
-          "next_state": "idle"
   },
 
   "food": {
           "content": "Which food item would you like?",
-          "next_state": "eating",
+          "next_state": "idle",
           "response": [
             "1",
             "2",
             "3"
           ]
-  },
-  "eating": {
-          "content": "",
-          "next_state": "idle"
-  },
+},
 
   "clean": {
 
