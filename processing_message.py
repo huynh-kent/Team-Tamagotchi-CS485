@@ -13,9 +13,13 @@ with open('game_script.json', 'r') as myfile:
 
 def process_message(user, sent_input):
     user.prev_state = user.state
+    user.state = CORPUS[user.state]['next_state']    
+    if sent_input not in CORPUS[user.prev_state]['response']:
+        user.state = user.prev_state
 
     if user.state == 'begin':
-        content = f"{CORPUS[user.state]['content']}"
+        content = {CORPUS[user.state]['content']}
+        content = f"{content}"
     elif user.state == 'choose':
         pet_choices = pets()
         content = f"{CORPUS[user.state]['content']}"
@@ -32,7 +36,6 @@ def process_message(user, sent_input):
     else:
         content = "Please try again"
 
-    user.state = CORPUS[user.state]['next_state']    
     # check state
     logger.debug(user.state)
 
