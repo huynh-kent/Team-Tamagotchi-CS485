@@ -8,7 +8,7 @@
   },
 
   "choose" : {
-              "content": "Choose Your Pet(1, 2, 3):\n{pet_choices.show_choices()}",
+              "content": "Choose Your Pet(1, 2, 3):\n",
               "next_state": "name",
               "response": {
                 "1": "1 selected",
