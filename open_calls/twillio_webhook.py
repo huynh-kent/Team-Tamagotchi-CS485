@@ -2,7 +2,7 @@ from flask import request, g
 from flask_json import FlaskJSON, JsonError, json_response, as_json
 from tools.logging import logger
 
-from pickles import pickling
+from pickles import pickling, save_pickle
 from send_message_back import send_message, send_picture
 from processing_message import process_message
 
@@ -30,5 +30,8 @@ def handle_request():
 
     # test
     #send_message(request.form, get_tamagotchi())
+
+    # save pickle
+    save_pickle(request.form, user)
 
     return json_response( status = "ok" )
