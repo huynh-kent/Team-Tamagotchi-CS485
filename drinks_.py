@@ -5,14 +5,11 @@ all_drinks = ['🥛','🍼','🫖','☕️','🍵','🧃','🥤','🧋','🍶',
               ]
 
 class drinks:
-    drink_options = {}
-    drink_thirst = []
+    drink_options = []
     choices = {}
 
     def __init__(self):
         self.choices = random.sample(all_drinks, 3)
-        for drink in self.choices:
-            self.drink_thirst.append(random.randint(10, 30))
 
     def show_choices(self):
         drink_string = ''
