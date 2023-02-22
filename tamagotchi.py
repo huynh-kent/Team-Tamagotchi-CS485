@@ -19,9 +19,9 @@ class Tamagotchi:
         self.tick_loop()
         self.s.enter(10, 1, self.tick_loop, (self.s,))
 
-    def tick_loop(self, sc):
+    def tick_loop(self):
         self.time_tick()
-        self.s.enter(10, 1, self.tick_loop, (sc,))
+        self.s.enter(10, 1, self.tick_loop, (self,))
 
 
     def eating(self, food):
