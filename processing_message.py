@@ -1,7 +1,7 @@
 import random
 import json
 from tools.logging import logger
-import pets
+from pets import pets
 
 # open corpus json
 CORPUS = {}
