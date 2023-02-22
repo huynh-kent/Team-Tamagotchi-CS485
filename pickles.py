@@ -31,7 +31,7 @@ def pickling(form):
 
     return act
 
+# save pickle/user data
 def save_pickle(form, act):
-    # save pickle
     with open(f"users/{form['From']}.pkl", 'wb') as p:
         pickle.dump(act,p)
