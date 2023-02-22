@@ -9,19 +9,18 @@ from processing_message import process_message
 def handle_request():
     # user info
     #logger.debug(request.form)
-    logger.debug(request.form['From'])
+    #logger.debug(request.form['From'])
 
     # get user - pickling from pickles.py 
     user = pickling(request.form)
-    # get user - state
-    #state = user.state
+    logger.debug(user.phone, user.state, sent_input)
     # processing incoming message from processing_message.py
     sent_input = str(request.form['Body']).lower()
     user, response = process_message(user, sent_input)
 
     # send message back/game state from send_message_back.py
     send_message(user.phone, response)
-    
+
     # send picture name/url from media.yml
     #picture_name = 'sample-tamagotchi-image'
     #send_picture(request.form, picture_name)
