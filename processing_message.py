@@ -20,10 +20,10 @@ def process_message(user, sent_input):
     if user.state == 'begin':
         content = CORPUS[user.state]['content']
     elif user.state == 'choose':
-        pet_choices = pets()
-        content = f"{(CORPUS[user.state]['content'])+(pet_choices.show_choices())}"
+        choices = pets()
+        content = f"{(CORPUS[user.state]['content'])+(choices.show_choices())}"
     elif user.state == 'name':
-        chosen_pet = pet_choices[int(sent_input)-1]
+        chosen_pet = choices.pet_choices[int(sent_input)-1]
         user.create_tamagotchi(chosen_pet)
         content = CORPUS[user.state]['content']
     elif user.state == 'confirmation':
