@@ -48,8 +48,7 @@ class Tamagotchi:
 
 def get_outline():
     # tamagotchi outline
-    tamagotchi_outline = """
-    
+    tamagotchi_outline = """\n
               🌸🌸🌸🌸🌸🌸
          🌸🌸🌸🌸🌸🌸🌸🌸
       🌸🌸🌸🌸🌸🌸🌸🌸🌸
