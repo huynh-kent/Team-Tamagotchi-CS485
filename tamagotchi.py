@@ -46,25 +46,25 @@ class Tamagotchi:
         """
         return status
 
-def get_tamagotchi():
-    tamagotchi_outline = """Hello, this is how your Tamagotchi is looking right now!
-\n
-              🌸🌸🌸🌸🌸🌸
-         🌸🌸🌸🌸🌸🌸🌸🌸
-      🌸🌸🌸🌸🌸🌸🌸🌸🌸
-   🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
-🌸                                                  🌸
-🌸                                                  🌸
-🌸                                                  🌸
-🌸                                                  🌸
-🌸                                                  🌸
-🌸                                                  🌸
-🌸                                                  🌸
-🌸                                                  🌸
-🌸                                                  🌸
-   🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
-      🌸🌸🌸🌸🌸🌸🌸🌸🌸
-         🌸🌸🌸🌸🌸🌸🌸🌸
-              🌸🌸🌸🌸🌸🌸
-"""
-    return tamagotchi_outline
+    def get_tamagotchi(self):
+        tamagotchi_outline = f"""Hello, this is how your Tamagotchi is looking right now!
+    \n
+                🌸🌸🌸🌸🌸🌸
+            🌸🌸🌸🌸🌸🌸🌸🌸
+        🌸🌸🌸🌸🌸🌸🌸🌸🌸
+    🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
+    🌸                                                  🌸
+    🌸                                                  🌸
+    🌸                                                  🌸
+    🌸                                                  🌸
+    🌸                       {self.emoji}                         🌸
+    🌸                                                  🌸
+    🌸                                                  🌸
+    🌸                                                  🌸
+    🌸                                                  🌸
+    🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
+        🌸🌸🌸🌸🌸🌸🌸🌸🌸
+            🌸🌸🌸🌸🌸🌸🌸🌸
+                🌸🌸🌸🌸🌸🌸
+    """
+        return tamagotchi_outline

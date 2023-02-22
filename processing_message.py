@@ -38,7 +38,12 @@ def process_message(user, sent_input):
             send_message(user.phone, user.tamagotchi.emoji)
             content = CORPUS['name']['content']
         else:
-            content = f"{(CORPUS[user.state]['content'])+(user.tamagotchi.name)}!"
+            content = f"{(CORPUS[user.state]['content'])+(user.tamagotchi.name)}! 🎉🎉🎉"
+            user.state = 'idle'
+            pass
+    elif user.state == 'idle':
+        send_message(user.phone, user.tamagotchi.get_outline())
+        
 
     #elif sent_input in CORPUS[user.state]['response']:
     #    response = CORPUS[user.state]['response'][sent_input]
