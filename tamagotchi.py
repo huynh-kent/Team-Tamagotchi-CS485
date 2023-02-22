@@ -15,14 +15,14 @@ class Tamagotchi:
 
     def __init__(self, emoji):
         self.emoji = emoji
-        self.s = sched.scheduler(time.time, time.sleep)
-        self.s.enter(10, 1, self.tick_loop, (self.s,))
-        #self.t = threading.Thread(target=self.s.run)
-        #self.t.start()
+ #       self.s = sched.scheduler(time.time, time.sleep)
+  #      self.s.enter(10, 1, self.tick_loop, (self.s,))
+   #     #self.t = threading.Thread(target=self.s.run)
+   #     #self.t.start()
 
-    def tick_loop(self):
-        self.time_tick()
-        self.s.enter(10, 1, self.tick_loop, (self,))
+  #  def tick_loop(self):
+  #      self.time_tick()
+  #      self.s.enter(10, 1, self.tick_loop, (self,))
 
 
     def eating(self, food):
