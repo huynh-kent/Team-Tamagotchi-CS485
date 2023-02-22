@@ -46,7 +46,7 @@ class Tamagotchi:
         """
         return status
 
-    def get_tamagotchi(self):
+    def draw_tamagotchi(self):
         tamagotchi_outline = f"""Hello, this is how your Tamagotchi is looking right now!
     \n
                 🌸🌸🌸🌸🌸🌸
