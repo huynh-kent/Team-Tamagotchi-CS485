@@ -7,7 +7,9 @@ with open('game_script.json', 'r') as myfile:
     CORPUS = json.loads(myfile.read())
 
 def process_message(user, sent_input):
-    if sent_input in CORPUS[user.state]['response']:
+    if user.state == 'begin':
+        response = 'Hi, Welcome!'
+    elif sent_input in CORPUS[user.state]['response']:
         response = CORPUS[user.state]['response'][sent_input]
         user.state = CORPUS[user.state]['next_state']
     else:
