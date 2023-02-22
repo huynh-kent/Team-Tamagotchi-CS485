@@ -18,17 +18,15 @@ def handle_request():
     user = pickling(request.form)
     # get user - state
     state = user.state
-    # 
-    
     # processing incoming message from processing_message.py
     sent_input = str(request.form['Body']).lower()
-    response = process_message(sent_input)
+    response = process_message(state, sent_input)
 
     # send message back/game state from send_message_back.py
     send_message(request.form, response)
     # send picture name/url from media.yml
-    picture_name = 'sample-tamagotchi-image'
-    send_picture(request.form, picture_name)
+    #picture_name = 'sample-tamagotchi-image'
+    #send_picture(request.form, picture_name)
 
     # test
     #send_message(request.form, get_tamagotchi())
