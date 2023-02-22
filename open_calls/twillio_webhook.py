@@ -14,9 +14,9 @@ def handle_request():
     #logger.debug(request.form)
     logger.debug(request.form['From'])
 
-    # pickling from pickles.py, generate response
-    response = pickling(request.form)
-    logger.debug(response)
+    # get user - pickling from pickles.py 
+    user = pickling(request.form)
+
 
     # send message back/game state from send_message_back.py
     send_message(request.form, response)
@@ -32,3 +32,5 @@ def handle_request():
     #send_message(request.form, get_tamagotchi())
 
     return json_response( status = "ok" )
+
+print("main?")
