@@ -6,6 +6,14 @@ from pickles import pickling, save_pickle
 from send_message_back import send_message, send_picture
 from processing_message import process_message
 
+from apscheduler.schedulers.background import BackgroundScheduler
+scheduler = BackgroundScheduler()
+def time_passed(user):
+    user.tamagotchi.time_tick()
+    return user
+scheduler.add_job(lambda: time_passed(user), trigger="interval", seconds=10)
+scheduler.start()
+
 ### Main
 def handle_request():
     # user info
@@ -30,6 +38,6 @@ def handle_request():
     #send_message(request.form, get_tamagotchi())
 
     # save pickle/user
-    save_pickle(request.form, user)
+    save_pickle(user)
 
     return json_response( status = "ok" )
