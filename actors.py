@@ -1,3 +1,5 @@
+import tamagotchi
+
 class actor:
 
     def __init__(self, phone_number):
@@ -6,9 +8,13 @@ class actor:
         self.state = "begin"
         print('this is created:')
         print(self.state)
+        self.tamagotchi = None
 
     def save_msg(self, msg):
         self.prev_msgs.append(msg)
 
     def change_state(self, new_state):
         state = new_state
+
+    def create_tamagotchi(self):
+        self.tamagotchi = tamagotchi()

@@ -2,7 +2,6 @@ import os
 import time
 import sched
 import threading
-import inquirer
 
 class Tamagotchi:
     age = 0
@@ -12,10 +11,10 @@ class Tamagotchi:
     alive = True
     bored = 0
     energy = 100
+    name = ''
 
-    def __init__(self, name, emoji):
-        name = name
-        emoji = emoji
+    def __init__(self, emoji):
+        self.emoji = emoji
 
 
     def eating(self, food):
@@ -47,3 +46,25 @@ class Tamagotchi:
         """
         return status
 
+def get_tamagotchi():
+    tamagotchi_outline = """Hello, this is how your Tamagotchi is looking right now!
+\n
+              🌸🌸🌸🌸🌸🌸
+         🌸🌸🌸🌸🌸🌸🌸🌸
+      🌸🌸🌸🌸🌸🌸🌸🌸🌸
+   🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
+🌸                                                  🌸
+🌸                                                  🌸
+🌸                                                  🌸
+🌸                                                  🌸
+🌸                                                  🌸
+🌸                                                  🌸
+🌸                                                  🌸
+🌸                                                  🌸
+🌸                                                  🌸
+   🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
+      🌸🌸🌸🌸🌸🌸🌸🌸🌸
+         🌸🌸🌸🌸🌸🌸🌸🌸
+              🌸🌸🌸🌸🌸🌸
+"""
+    return tamagotchi_outline
