@@ -8,6 +8,16 @@ import sched
 from send_message_back import send_message
 import time
 
+def recreate_choices(pet, drink, food):
+    pet = pets()
+    drink = drinks()
+    food = foods()
+
+    return pet, drink , food
+
+pet_choices = pets()
+drink_choices = drinks()
+food_choices = foods()
 
 # open corpus json
 CORPUS = {}
@@ -16,9 +26,6 @@ with open('game_script.json', 'r') as myfile:
 
 
 def process_message(user, sent_input):
-    pet_choices = pets()
-    drink_choices = drinks()
-    food_choices = foods()
 
     user.prev_state = user.state
     user.state = CORPUS[user.state]['next_state']   
@@ -37,6 +44,7 @@ def process_message(user, sent_input):
         user.create_tamagotchi(pet_choices.pet_options[int(sent_input)-1])
         send_message(user.phone, user.tamagotchi.emoji)
         content = CORPUS[user.state]['content']
+        recreate_choices(pet_choices, drink_choices, food_choices)
 
     elif user.state == 'confirmation':
         user.tamagotchi.name = sent_input.upper()
@@ -83,6 +91,7 @@ def process_message(user, sent_input):
             send_message(user.phone, user.tamagotchi.draw())
             send_message(user.phone, content)
             content = CORPUS[user.state]['content']
+            recreate_choices(pet_choices, drink_choices, food_choices)
 
     elif user.state == 'food':
         if sent_input not in CORPUS['food']['response']:
@@ -98,16 +107,9 @@ def process_message(user, sent_input):
             send_message(user.phone, user.tamagotchi.draw())
             send_message(user.phone, content)
             content = CORPUS[user.state]['content']
-
-            
-
-
-            
+            recreate_choices(pet_choices, drink_choices, food_choices)
 
 
-    #elif sent_input in CORPUS[user.state]['response']:
-    #    response = CORPUS[user.state]['response'][sent_input]
-    #    user.state = CORPUS[user.state]['next_state']
 
     # check state
     logger.debug(f'State After: {user.state}')
