@@ -1,6 +1,6 @@
 {
   "begin" : {
-              "content": "Type BEGIN to Start!",
+              "content": "Welcome to the SMS Tamagotchi Game! You are about to embark on the mythical journey of parental ineptitude!\nType BEGIN to Start!",
               "response": [
                 "begin"
               ],
