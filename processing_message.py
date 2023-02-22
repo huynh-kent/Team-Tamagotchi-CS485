@@ -13,6 +13,7 @@ with open('game_script.json', 'r') as myfile:
     CORPUS = json.loads(myfile.read())
 
 pet_choices = pets()
+pet_name = ''
 
 def process_message(user, sent_input):
     user.prev_state = user.state
@@ -28,12 +29,10 @@ def process_message(user, sent_input):
         chosen_pet = pet_choices.pet_options[int(sent_input)-1]
         user.create_tamagotchi(chosen_pet)
         send_message(user.phone, chosen_pet)
-        content = f"{(CORPUS[user.state]['content'])}"
+        content = CORPUS[user.state]['content']
     elif user.state == 'confirmation':
-        if user.prev_state == 'choose':
-            pass
-        elif user.prev_state == 'name':
-            pass
+        pet_name = sent_input
+        content = f"{(pet_name)+(CORPUS[user.state]['content'])}"
     #elif sent_input in CORPUS[user.state]['response']:
     #    response = CORPUS[user.state]['response'][sent_input]
     #    user.state = CORPUS[user.state]['next_state']
