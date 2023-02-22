@@ -89,6 +89,7 @@ def process_message(user, sent_input):
         else:
             chosen_food = food(food_choices.food_options[int(sent_input)-1])
             send_message(user.phone, chosen_food.emoji)
+            user.tamagotchi.eat(chosen_food)
             content = f"{user.tamagotchi.name} has satisfied {chosen_food.hunger} hunger points from eating that!"
             user.state = 'idle'
             send_message(user.phone, user.tamagotchi.draw())
