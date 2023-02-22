@@ -12,8 +12,6 @@ class Tamagotchi:
         self.emoji = emoji
         var_list = [self.age, self.happiness, self.hunger, self.thirst, self.bored, self.energy]
         def num_limit(num, minimum=0, maximum=100):
-            """Limits input 'num' between minimum and maximum values.
-            Default minimum value is 1 and maximum value is 255."""
             return max(min(num, maximum), minimum)
         map(num_limit, var_list)
 
@@ -36,7 +34,7 @@ class Tamagotchi:
         if self.hunger < 50 or self.bored > 50 or self.thirst < 50:
             self.happiness -= 5
 
-        if self.hunger < 0 or self.bored > 100 or self.thirst < 0 or self.happiness < 0:
+        if self.hunger <= 0 or self.bored >= 100 or self.thirst <= 0 or self.happiness <= 0:
             self.alive = False
         
 
