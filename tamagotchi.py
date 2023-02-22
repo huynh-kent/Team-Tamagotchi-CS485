@@ -35,7 +35,6 @@ class Tamagotchi:
 
     def get_status(self):
         status = f"""
-        {self.emoji}
         Name: {self.name}
         Age: {self.age}
         Happiness: {self.happiness}
@@ -66,5 +65,6 @@ class Tamagotchi:
     🌸🌸🌸🌸🌸🌸🌸🌸🌸
         🌸🌸🌸🌸🌸🌸🌸🌸
             🌸🌸🌸🌸🌸🌸
+{self.get_status()}
 """
         return tamagotchi_outline
