@@ -23,10 +23,12 @@ class pets:
         #for count,choice in enumerate(self.choices):
         #    print(f"{choice} --- {self.pet_hunger[count]}")
         pet_options = []
+        pet_string = ''
         for choice in self.choices:
             pet_options.append(choice)
+            pet_string += choice
 
-        return pet_options
+        return pet_string
 
     def give_pet_choices(self):
         """pet_options = []
