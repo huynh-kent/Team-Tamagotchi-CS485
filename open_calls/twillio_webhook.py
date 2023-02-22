@@ -9,13 +9,12 @@ from processing_message import process_message
 def handle_request():
     # user info
     #logger.debug(request.form)
-    #logger.debug(request.form['From'])
-
+    logger.debug(f"Phone#: {request.form['From']}")
     # get user - pickling from pickles.py 
     user = pickling(request.form)
-    logger.debug(f'Phone#: {user.phone}')
     
     # processing incoming message from processing_message.py
+    logger.debug(f'State Before: {user.state}')
     logger.debug(f"Text: {request.form['Body']}")
     sent_input = str(request.form['Body']).lower()
     
