@@ -16,6 +16,10 @@ from tools.get_twillio_client import get_sms_client
 
 from tools.logging import logger
 
+from flask_apscheduler import APScheduler
+import os
+import pickle
+
 ERROR_MSG = "Ooops.. Didn't work!"
 
 
@@ -23,6 +27,32 @@ ERROR_MSG = "Ooops.. Didn't work!"
 app = Flask(__name__)
 #add in flask json
 FlaskJSON(app)
+
+### scheduler
+scheduler = APScheduler()
+# task
+def time_has_passed():
+    for file in os.path("users/"):   
+        try:
+            with open(file, 'rb') as p:
+                act = pickle.load(p)
+                if act.tamagotchi is not None:
+                    act.tamagotchi.time_tick()
+            with open(f"users/{act.phone}.pkl", 'wb') as p:
+                pickle.dump(act,p)
+        except Exception:
+            print("file already open")
+# configure
+app.config['JOBS'] = [
+    {
+        'id': 'my_job',
+        'func': time_has_passed,
+        'trigger': 'interval',
+        'seconds': 10
+    }
+]
+scheduler.init_app(app)
+scheduler.start()
 
 #g is flask for a global var storage 
 def init_new_env():
