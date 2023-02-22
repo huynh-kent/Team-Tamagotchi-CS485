@@ -18,7 +18,7 @@ class Tamagotchi:
         self.s = sched.scheduler(time.time, time.sleep)
         self.tick_loop()
         self.s.enter(10, 1, self.tick_loop, (self.s,))
-        self.t = threading.Thread(target=self.s.tick_loop)
+        self.t = threading.Thread(target=self.s.run)
         self.t.start()
 
     def tick_loop(self):
