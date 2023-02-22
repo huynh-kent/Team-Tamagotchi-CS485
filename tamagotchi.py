@@ -3,6 +3,8 @@ import time
 import sched
 import threading
 
+s = sched.scheduler(time.time, time.sleep)
+
 class Tamagotchi:
     age = 0
     happiness = 0
@@ -15,6 +17,11 @@ class Tamagotchi:
 
     def __init__(self, emoji):
         self.emoji = emoji
+        self.tick_loop()
+
+    def tick_loop(self):
+        self.time_tick()
+        s.enter(10, 1, self.tick_loop, (self,))
 
 
     def eating(self, food):
@@ -27,7 +34,7 @@ class Tamagotchi:
         self.energy -= activity.energy
         self.bored -= activity.bored
 
-    def time_passed(self):
+    def time_tick(self):
         self.age += 0.1
         self.hunger -= 5
         self.thirst -= 3
