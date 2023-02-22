@@ -45,7 +45,7 @@ class Tamagotchi:
     def get_status(self):
         status = f"""
 Name: {self.name}
-Age: {self.age}
+Age: {self.age:.2f}
 Happiness: {self.happiness}
 Hunger: {self.hunger}
 Thirst: {self.thirst}
