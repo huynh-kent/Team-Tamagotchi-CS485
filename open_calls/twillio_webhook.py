@@ -1,18 +1,12 @@
-import yaml
 from flask import request, g
 from flask_json import FlaskJSON, JsonError, json_response, as_json
-
 from tools.logging import logger
+
 from pickles import pickling
 from send_message_back import send_message, send_picture
 from processing_message import process_message
 
 from tamagotchi import get_tamagotchi # test
-
-yml_configs = {}
-BODY_MSGS = []
-with open('config.yml', 'r') as yml_file:
-    yml_configs = yaml.safe_load(yml_file)
 
 ### Main
 def handle_request():
@@ -24,7 +18,7 @@ def handle_request():
     response = pickling(request.form)
     logger.debug(response)
 
-    # send message back/game state
+    # send message back/game state from send_message_back.py
     send_message(request.form, response)
     # send picture name/url from media.yml
     picture_name = 'sample-tamagotchi-image'
