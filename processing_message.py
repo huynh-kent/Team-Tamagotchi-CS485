@@ -76,15 +76,20 @@ def process_message(user, sent_input):
         else:
             chosen_drink = drink(drink_choices.drink_options[int(sent_input)-1])
             send_message(user.phone, chosen_drink.emoji)
-            content = f"{user.tamagotchi.name} has quenched {chosen_drink.thirst} thirst from that drink!"
-
+            content = f"{user.tamagotchi.name} has quenched {chosen_drink.thirst} thirst from drinking that!"
+            user.state = 'idle'
+            send_message(user.phone, user.tamagotchi.draw())
 
     elif user.state == 'food':
         if sent_input not in CORPUS['food']['response']:
             content = CORPUS[user.state]['content']
             send_message(user.phone, food_choices.show_choices())
         else:
-            pass
+            chosen_food = food(food_choices.food_options[int(sent_input)-1])
+            send_message(user.phone, chosen_food.emoji)
+            content = f"{user.tamagotchi.name} has satisfied {chosen_food.hunger} hunger points from eating that!"
+            user.state = 'idle'
+            send_message(user.phone, user.tamagotchi.draw())
 
             
 
