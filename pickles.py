@@ -32,7 +32,7 @@ def pickling(form):
     return act
 
 # save pickle/user data
-def save_pickle(form, act):
-    with open(f"users/{form['From']}.pkl", 'wb') as p:
+def save_pickle(act):
+    with open(f"users/{act.phone}.pkl", 'wb') as p:
         pickle.dump(act,p)
 
