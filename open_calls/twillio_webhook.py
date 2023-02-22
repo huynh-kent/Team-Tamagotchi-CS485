@@ -6,8 +6,6 @@ from pickles import pickling, save_pickle
 from send_message_back import send_message, send_picture
 from processing_message import process_message
 
-from tamagotchi import get_tamagotchi # test
-
 ### Main
 def handle_request():
     # user info
