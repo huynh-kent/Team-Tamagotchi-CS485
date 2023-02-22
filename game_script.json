@@ -38,7 +38,7 @@
 
   "idle" : {
               "content" : "",
-              "next_state" : ""
+              "next_state" : "idle"
   }
 
 
