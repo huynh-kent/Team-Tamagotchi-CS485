@@ -27,7 +27,13 @@
               "response": [
                 "yes",
                 "no"
-              ]
+              ],
+              "next_state": "congratulations"
+  },
+
+  "congratulations": {
+              "content": "Congratulations to your new pet, ",
+              "next_state": "idle"
   },
 
   "idle" : {
