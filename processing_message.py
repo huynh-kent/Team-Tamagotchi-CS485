@@ -17,8 +17,9 @@ pet_name = ''
 
 def process_message(user, sent_input):
     user.prev_state = user.state
-    user.state = CORPUS[user.state]['next_state']    
-    if sent_input not in CORPUS[user.prev_state]['response']:
+    user.state = CORPUS[user.state]['next_state']   
+
+    if sent_input not in CORPUS[user.prev_state]['response'] and CORPUS[user.prev_state]['response'] is not None:
         user.state = user.prev_state
 
     if user.state == 'begin':
