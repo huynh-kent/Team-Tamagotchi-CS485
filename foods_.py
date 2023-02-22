@@ -13,17 +13,19 @@ all_foods = ['🍏', '🍎','🍐','🍊','🍋','🍌','🍉','🍇','🍓','�
 
 
 class foods:
+    food_options = []
     choices = {}
-    food_hunger = []
 
     def __init__(self):
         self.choices = random.sample(all_foods, 3)
-        for food in self.choices:
-            self.food_hunger.append(random.randint(10, 30))
 
     def show_choices(self):
-        for count,choice in enumerate(self.choices):
-            print(f"{choice} --- {self.food_hunger[count]}")
+        food_string = ''
+        for choice in self.choices:
+            self.food_options.append(choice)
+            food_string += choice
+        
+        return food_string
 
     def give_food_choices(self):
         food_options = []
@@ -39,6 +41,6 @@ class food:
     emoji = ''
     hunger = 0
 
-    def __init__(self, emoji, hunger):
+    def __init__(self, emoji):
         self.emoji = emoji
-        self.hunger = hunger
+        self.hunger = random.randint(10, 30)
