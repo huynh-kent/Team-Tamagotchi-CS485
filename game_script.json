@@ -52,9 +52,10 @@
           "response": [
             "drinks",
             "food"
-          ]
+          ],
+          "next_state": "shop"
   },
-  
+
   "drinks": {
           "content": "Which drink would you like?",
           "next_state": "drinking",
