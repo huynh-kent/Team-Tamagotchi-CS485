@@ -24,7 +24,7 @@ def handle_request():
     # get user - pickling from pickles.py 
     user = pickling(request.form)
     # get user - state
-    state = user.state
+    #state = user.state
     # processing incoming message from processing_message.py
     sent_input = str(request.form['Body']).lower()
     user, response = process_message(user, sent_input)
@@ -38,13 +38,15 @@ def handle_request():
     # test
     #send_message(request.form, get_tamagotchi())
 
-    # save pickle/user
-    #save_pickle(user)
-
     # delayed pickle
-    scheduler.add_job(lambda: delayed_pickle(user), trigger="interval", seconds=360, max_instances=1)
+    #scheduler.add_job(lambda: delayed_pickle(user), trigger="interval", seconds=360, max_instances=1)
+
+    # time_tick
     if user.tamagotchi is not None:
         scheduler.add_job(lambda: time_passed(user), trigger="interval", seconds=10)
     scheduler.start()
+
+    # save pickle/user
+    save_pickle(user)
 
     return json_response( status = "ok" )
