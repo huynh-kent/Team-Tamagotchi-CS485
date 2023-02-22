@@ -13,11 +13,12 @@ def handle_request():
 
     # get user - pickling from pickles.py 
     user = pickling(request.form)
-
+    logger.debug(f'Phone#: {user.phone}')
+    
     # processing incoming message from processing_message.py
+    logger.debug(f"Text: {request.form['Body']}")
     sent_input = str(request.form['Body']).lower()
     
-    logger.debug(user.phone, user.state, sent_input)
     user, response = process_message(user, sent_input)
 
     # send message back/game state from send_message_back.py
