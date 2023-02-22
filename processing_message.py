@@ -42,6 +42,7 @@ def process_message(user, sent_input):
             user.state = 'idle'
     else:
         content = "Please try again"
+        
     if user.state == 'idle':
         send_message(user.phone, user.tamagotchi.draw())
 
