@@ -16,10 +16,10 @@ class Tamagotchi:
             return max(min(num, maximum), minimum)
         map(num_limit, var_list)
 
-    def eating(self, food):
+    def eat(self, food):
         self.hunger += food.hunger
 
-    def drinking(self, drink):
+    def drink(self, drink):
         self.thirst += drink.thirst
 
     def activity(self, activity):
