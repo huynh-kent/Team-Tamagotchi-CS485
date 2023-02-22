@@ -10,11 +10,11 @@
   "choose" : {
               "content": "Choose Your Pet(1, 2, 3):\n",
               "next_state": "name",
-              "response": {
-                "1": "1 selected",
-                "2": "2 selected",
-                "3": "3 selected"
-              }
+              "response": [
+                "1",
+                "2",
+                "3"
+              ]
   },
 
   "name"  :  {
