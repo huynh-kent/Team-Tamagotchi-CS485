@@ -5,8 +5,9 @@ all_drinks = ['🥛','🍼','🫖','☕️','🍵','🧃','🥤','🧋','🍶',
               ]
 
 class drinks:
-    choices = {}
+    drink_options = {}
     drink_thirst = []
+    choices = {}
 
     def __init__(self):
         self.choices = random.sample(all_drinks, 3)
@@ -14,8 +15,13 @@ class drinks:
             self.drink_thirst.append(random.randint(10, 30))
 
     def show_choices(self):
-        for count,choice in enumerate(self.choices):
-            print(f"{choice} --- {self.drink_thirst[count]}")
+        drink_string = ''
+        for choice in self.choices:
+            self.drink_options.append(choice)
+            drink_string += choice
+
+        return drink_string
+        
 
     def give_drink_choices(self):
         drink_options = []
@@ -31,6 +37,6 @@ class drink:
     emoji = ''
     thirst = 0
 
-    def __init__(self, emoji, thirst):
+    def __init__(self, emoji):
         self.emoji = emoji
-        self.thirst = thirst
+        self.thirst = random.randint(10, 30)
