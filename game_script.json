@@ -8,7 +8,7 @@
   },
 
   "choose" : {
-              "content": "Choose Your Pet(1, 2, 3):\n",
+              "content": "Choose Your Pet (1, 2, 3)\n",
               "next_state": "name",
               "response": [
                 "1",
@@ -37,8 +37,14 @@
   },
 
   "idle" : {
-              "content" : "1 - Pet\n2 - Shop\n3 - ",
-              "next_state" : "idle"
+              "content" : "Would you like to...\nShop\tClean\nPlay\tSleep",
+              "next_state" : "idle",
+              "response": [
+                "shop",
+                "clean",
+                "play",
+                "sleep"
+              ]
   }
 
 
