@@ -42,9 +42,7 @@ def time_has_passed():
             with open(f"users/{act.phone}.pkl", 'wb') as b:
                 pickle.dump(act,b)
         except Exception:
-            if file == "users/empty.pkl":
-                pass
-            else:
+            if 'empty' not in file:
                 print(f"{file} failed to pass time")
 # configure
 app.config['JOBS'] = [
