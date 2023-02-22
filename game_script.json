@@ -38,9 +38,7 @@
 
   "idle" : {
               "content" : "1 - Pet\n2 - Shop\n3 - ",
-              "next_state" : [
-
-              ]
+              "next_state" : "idle"
   }
 
 
