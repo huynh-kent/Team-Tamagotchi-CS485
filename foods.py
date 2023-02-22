@@ -19,7 +19,7 @@ class foods:
     def __init__(self):
         self.choices = {random.choices(all_foods, k=3)}
         for food in self.choices:
-            self.food_hunger.append(random.randint(1, 10))
+            self.food_hunger.append(random.randint(10, 30))
 
     def show_choices(self):
         for count,choice in enumerate(self.choices):
@@ -42,8 +42,3 @@ class food:
     def __init__(self, emoji, hunger):
         self.emoji = emoji
         self.hunger = hunger
-
-
-test = foods()
-test.give_food_choices()
-

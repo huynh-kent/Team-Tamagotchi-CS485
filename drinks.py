@@ -11,7 +11,7 @@ class drinks:
     def __init__(self):
         self.choices = {random.choices(all_drinks, k=3)}
         for drink in self.choices:
-            self.drink_thirst.append(random.randint(1, 10))
+            self.drink_thirst.append(random.randint(10, 30))
 
     def show_choices(self):
         for count,choice in enumerate(self.choices):
@@ -34,7 +34,3 @@ class drink:
     def __init__(self, emoji, thirst):
         self.emoji = emoji
         self.thirst = thirst
-
-# testing
-drink_test = drinks()
-drink_test.give_drink_choices()
