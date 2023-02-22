@@ -13,7 +13,7 @@ class pets:
     pet_options = []
     choices = {}
     def __init__(self):
-        self.choices = set(random.choices(all_pets, k=3))
+        self.choices = (random.choices(all_pets, k=3))
         #for pet in self.choices:
         #    self.pet_hunger.append(random.randint(1, 10))
 
