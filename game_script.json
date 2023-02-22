@@ -15,8 +15,12 @@
   },
 
   "name"  :  {
-              "content": "",
-              "next_state": ""
+              "content": "Give it a name",
+              "next_state": "name_confirmation"
+  },
+
+  "name_confirmation": {
+              "content": "Are you sure you want to name it"
   },
 
   "idle" : {
