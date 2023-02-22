@@ -33,7 +33,7 @@ def process_message(user, sent_input):
     elif user.state == 'name':
         user.create_tamagotchi(pet_choices.pet_options[int(sent_input)-1])
         send_message(user.phone, user.tamagotchi.emoji)
-        scheduler.add_job(func=time_passed, trigger="interval", args=user, seconds=10)
+        scheduler.add_job(lambda: time_passed(user=user), trigger="interval", seconds=10)
         scheduler.start()
         content = CORPUS[user.state]['content']
     elif user.state == 'confirmation':
