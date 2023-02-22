@@ -9,7 +9,7 @@ class drinks:
     drink_thirst = []
 
     def __init__(self):
-        self.choices = random.choices(all_drinks, k=3)
+        self.choices = {random.choices(all_drinks, k=3)}
         for drink in self.choices:
             self.drink_thirst.append(random.randint(1, 10))
 

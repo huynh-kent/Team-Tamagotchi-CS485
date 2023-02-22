@@ -17,7 +17,7 @@ class foods:
     food_hunger = []
 
     def __init__(self):
-        self.choices = random.choices(all_foods, k=3)
+        self.choices = {random.choices(all_foods, k=3)}
         for food in self.choices:
             self.food_hunger.append(random.randint(1, 10))
 
