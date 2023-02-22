@@ -1,6 +1,7 @@
 import random
 import json
 from tools.logging import logger
+import pets
 
 # open corpus json
 CORPUS = {}
@@ -9,7 +10,8 @@ with open('game_script.json', 'r') as myfile:
 
 def process_message(user, sent_input):
     if user.state == 'begin':
-        response = 'Hi, Welcome!'
+        pet_choices = pets()
+        response = f'Hi, please pick a pet!\n{pet_choices.show_choices()}'
         user.state = CORPUS[user.state]['next_state']
     elif sent_input in CORPUS[user.state]['response']:
         response = CORPUS[user.state]['response'][sent_input]
