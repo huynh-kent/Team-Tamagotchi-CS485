@@ -32,7 +32,7 @@ FlaskJSON(app)
 scheduler = APScheduler()
 # task
 def time_has_passed():
-    for file in os.path("users/"):   
+    for file in os.listdir("users/"):   
         try:
             with open(file, 'rb') as p:
                 act = pickle.load(p)
