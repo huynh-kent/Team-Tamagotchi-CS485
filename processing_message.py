@@ -43,13 +43,15 @@ def process_message(user, sent_input):
             send_message(user.phone, user.tamagotchi.emoji)
             content = CORPUS['name']['content']
         else:
-            content = f"{(CORPUS[user.state]['content'])+(user.tamagotchi.name)}! 🎉🎉🎉"
+            congrats = f"{(CORPUS[user.state]['content'])+(user.tamagotchi.name)}! 🎉🎉🎉"
             user.state = 'idle'
     else:
         content = "Please try again"
         
     if user.state == 'idle':
         send_message(user.phone, user.tamagotchi.draw())
+        send_message(user.phone, congrats)
+        content = CORPUS[user.state]['content']
 
 
     #elif sent_input in CORPUS[user.state]['response']:
