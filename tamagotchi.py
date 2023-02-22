@@ -32,7 +32,6 @@ class Tamagotchi:
         self.hunger -= 5
         self.thirst -= 3
         self.bored += 2
-        if self.energy <= 100: self.energy += 2
 
         if self.hunger < 50 or self.bored > 50 or self.thirst < 50:
             self.happiness -= 5
