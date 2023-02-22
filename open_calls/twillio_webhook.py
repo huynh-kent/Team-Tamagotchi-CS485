@@ -20,7 +20,7 @@ def handle_request():
     state = user.state
     # processing incoming message from processing_message.py
     sent_input = str(request.form['Body']).lower()
-    response = process_message(user, sent_input)
+    user, response = process_message(user, sent_input)
 
     # send message back/game state from send_message_back.py
     send_message(request.form, response)
