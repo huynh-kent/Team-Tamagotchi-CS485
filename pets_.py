@@ -11,9 +11,10 @@ all_pets = ['🐶','🐱','🐭','🐹','🐰','🦊','🐻','🐼','🐻‍❄�
 
 class pets:
     pet_options = []
-    choices = {}
+    choices = {random.choices(all_pets, k=3)}
     def __init__(self):
-        self.choices = {random.choices(all_pets, k=3)}
+        #self.choices = {random.choices(all_pets, k=3)}
+        pass
 
     def show_choices(self):
         #for count,choice in enumerate(self.choices):
