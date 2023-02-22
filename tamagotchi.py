@@ -35,18 +35,18 @@ class Tamagotchi:
 
     def get_status(self):
         status = f"""
-        Name: {self.name}
-        Age: {self.age}
-        Happiness: {self.happiness}
-        Hunger: {self.hunger}
-        Thirst: {self.thirst}
-        Bored: {self.bored}
-        Energy: {self.energy}
-        """
+Name: {self.name}
+Age: {self.age}
+Happiness: {self.happiness}
+Hunger: {self.hunger}
+Thirst: {self.thirst}
+Bored: {self.bored}
+Energy: {self.energy}
+"""
         return status
 
     def draw(self):
-        tamagotchi_outline = f"""Hello, this is how your Tamagotchi is looking right now!
+        tamagotchi_outline = f"""
 \n
             🌸🌸🌸🌸🌸🌸
         🌸🌸🌸🌸🌸🌸🌸🌸
