@@ -13,9 +13,7 @@ all_pets = ['🍏', '🍎','🍐','🍊','🍋','🍌','🍉','🍇','🍓','�
 
 
 class pets:
-    choices = {}
-    #pet_hunger = []
-
+    
     def __init__(self):
         self.choices = random.choices(all_pets, k=3)
         #for pet in self.choices:
