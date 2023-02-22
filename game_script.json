@@ -5,8 +5,24 @@
   },
 
   "choose" : {
-              "content" : "Choose Your Pet(Dog, Cat):",
-               "next_state": "name"
-}
+              "content": "Choose Your Pet(Dog, Cat):",
+              "next_state": "name",
+              "select": {
+                "1": "",
+                "2": "",
+                "3": ""
+              }
+  },
+
+  "name"  :  {
+              "content": "",
+              "next_state": ""
+  },
+
+  "idle" : {
+              "content" : "",
+              "next_state" : ""
+  }
+
 
 }
