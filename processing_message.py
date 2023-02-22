@@ -3,15 +3,14 @@ import json
 
 # open corpus json
 CORPUS = {}
-with open('chatbot_corpus.json', 'r') as myfile:
+with open('game_script.json', 'r') as myfile:
     CORPUS = json.loads(myfile.read())
 
-def process_message(sent_input):
-    if sent_input in CORPUS['input']:
-        response = random.choice(CORPUS['input'][sent_input])
+def process_message(user, sent_input):
+    if sent_input in CORPUS[user.state]['response']:
+        response = CORPUS[user.state]['response'][sent_input]
+        user.state = CORPUS[user.state]['next_state']
     else:
-        CORPUS['input'][sent_input] = ['DID NOT FIND']
-        with open('chatbot_corpus.json', 'w') as myfile:
-            myfile.write(json.dumps(CORPUS, indent=4 ))
+        response = "Please try again"
 
     return response
