@@ -18,6 +18,7 @@ pet_choices = pets()
 scheduler = BackgroundScheduler()
 def time_passed(user):
     user.tamagotchi.time_tick()
+    return user
 
 def process_message(user, sent_input):
     user.prev_state = user.state
