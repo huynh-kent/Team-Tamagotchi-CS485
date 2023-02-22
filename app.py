@@ -19,6 +19,7 @@ from tools.logging import logger
 from flask_apscheduler import APScheduler
 import os
 import pickle
+from pathlib import Path
 
 ERROR_MSG = "Ooops.. Didn't work!"
 
@@ -32,14 +33,14 @@ FlaskJSON(app)
 scheduler = APScheduler()
 # task
 def time_has_passed():
-    for file in os.listdir("users/"):   
+    for file in Path("users").glob('*'):   
         try:
-            with open(file, 'rb') as p:
-                act = pickle.load(p)
+            with open(file, 'rb') as b:
+                act = pickle.load(b)
                 if act.tamagotchi is not None:
                     act.tamagotchi.time_tick()
-            with open(f"users/{act.phone}.pkl", 'wb') as p:
-                pickle.dump(act,p)
+            with open(f"users/{act.phone}.pkl", 'wb') as b:
+                pickle.dump(act,b)
         except Exception:
             print("file already open")
 # configure
