@@ -52,6 +52,6 @@ def process_message(user, sent_input):
     #    user.state = CORPUS[user.state]['next_state']
 
     # check state
-    logger.debug(user.state)
+    logger.debug(f'State After: {user.state}')
 
     return (user, content)
