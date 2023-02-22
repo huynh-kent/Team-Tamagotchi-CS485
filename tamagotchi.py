@@ -8,8 +8,16 @@ class Tamagotchi:
     energy: int = 100
     name = ''
 
+
+    def num_limit(self, num, minimum=0, maximum=100):
+        """Limits input 'num' between minimum and maximum values.
+        Default minimum value is 1 and maximum value is 255."""
+        return max(min(num, maximum), minimum)
+
     def __init__(self, emoji):
         self.emoji = emoji
+        var_list = [self.age, self.happiness, self.hunger, self.thirst, self.bored, self.energy]
+        map(self.num_limit(), var_list)
 
     def eating(self, food):
         self.hunger += food.hunger
@@ -26,7 +34,7 @@ class Tamagotchi:
         self.hunger -= 5
         self.thirst -= 3
         self.bored += 2
-        self.energy += 2
+        if self.energy <= 100: self.energy += 2
 
         if self.hunger < 50 or self.bored > 50 or self.thirst < 50:
             self.happiness -= 5
