@@ -38,11 +38,11 @@ def process_message(user, sent_input):
     elif user.state == 'congratulations':
         if sent_input == 'no':
             user.state = user.prev_state
-            user.create_tamagotchi(chosen_pet)
             send_message(user.phone, chosen_pet)
             content = CORPUS['name']['content']
         else:
-            content = CORPUS[user.state]['content']
+            user.tamagotchi.name = pet_name
+            content = f"{(CORPUS[user.state]['content'])+(pet_name)}!"
 
     #elif sent_input in CORPUS[user.state]['response']:
     #    response = CORPUS[user.state]['response'][sent_input]
