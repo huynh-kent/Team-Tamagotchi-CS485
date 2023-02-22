@@ -17,5 +17,5 @@ class actor:
     def change_state(self, new_state):
         state = new_state
 
-    def create_tamagotchi(self):
-        self.tamagotchi = tamagotchi()
+    def create_tamagotchi(self, pet):
+        self.tamagotchi = tamagotchi(pet)
