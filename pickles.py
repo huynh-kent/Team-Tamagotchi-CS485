@@ -23,11 +23,10 @@ def pickling(form):
 
     # save into message history
     act.save_msg(form['Body'])
-    logger.debug(f'Msgs: {act.prev_msgs}')
 
     # set new state
     #act.state = (CORPUS[act.state]['next_state'])
-    logger.debug(f'State: {act.state}')
+
 
     return act
 
