@@ -31,7 +31,7 @@ def handle_request():
     # test
     #send_message(request.form, get_tamagotchi())
 
-    # save pickle
+    # save pickle/user
     save_pickle(request.form, user)
 
     return json_response( status = "ok" )
