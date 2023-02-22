@@ -9,7 +9,7 @@ class Tamagotchi:
     name = ''
 
 
-    def num_limit(self, num, minimum=0, maximum=100):
+    def num_limit(num, minimum=0, maximum=100):
         """Limits input 'num' between minimum and maximum values.
         Default minimum value is 1 and maximum value is 255."""
         return max(min(num, maximum), minimum)
