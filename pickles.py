@@ -15,21 +15,23 @@ def pickling(form):
     if os.path.exists(f"users/{form['From']}.pkl"):   
         with open(f"users/{form['From']}.pkl", 'rb') as p:
             act = pickle.load(p)
-            response = (CORPUS[act.state]['content'])
+            #response = (CORPUS[act.state]['content'])
     # new user
     else:
         act = actor(form['From'])
-        response = (CORPUS['begin']['content'])
+        #response = (CORPUS['begin']['content'])
 
     # save into message history
     act.save_msg(form['Body'])
-    logger.debug(act.prev_msgs)
 
     # set new state
-    act.state = (CORPUS[act.state]['next_state'])
-    logger.debug(f'current state: {act.state}')
+    #act.state = (CORPUS[act.state]['next_state'])
 
-    with open(f"users/{form['From']}.pkl", 'wb') as p:
+
+    return act
+
+# save pickle/user data
+def save_pickle(act):
+    with open(f"users/{act.phone}.pkl", 'wb') as p:
         pickle.dump(act,p)
 
-    return response

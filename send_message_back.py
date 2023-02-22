@@ -8,7 +8,7 @@ with open('config.yml', 'r') as yml_file, open('media.yml') as media_file:
     yml_configs = yaml.safe_load(yml_file)
     media_urls = yaml.safe_load(media_file)
 
-
+"""
 def send_message(form, body):
     message = g.sms_client.messages.create(
                      body = body,
@@ -16,11 +16,20 @@ def send_message(form, body):
                      to = form['From'],
                  )
     return json_response(sid = message.sid)
+"""
 
-def send_picture(form, picture_name):
+def send_message(number, body):
+    message = g.sms_client.messages.create(
+                    body = body,
+                    from_ = yml_configs['twillio']['phone_number'],
+                    to = number,
+            )
+    return json_response(sid = message.sid)
+
+def send_picture(number, picture_name):
     message = g.sms_client.messages.create(
                     from_ = yml_configs['twillio']['phone_number'],
                     media_url = media_urls['images'][f'{picture_name}'],
-                    to = form['From'],
+                    to = number,
     )
     return json_response(sid = message.sid)

@@ -1,12 +1,88 @@
 {
   "begin" : {
-              "content": "Working!",
+              "content": "Welcome to the SMS Tamagotchi Game! You are about to embark on the mythical journey of parental ineptitude!\nType BEGIN to Start!",
+              "response": [
+                "begin"
+              ],
               "next_state": "choose"
   },
 
   "choose" : {
-              "content" : "Choose Your Pet(Dog, Cat):",
-               "next_state": "name"
-}
+              "content": "Choose Your Pet [ 1 2 3 ]\n",
+              "next_state": "name",
+              "response": [
+                "1",
+                "2",
+                "3"
+              ]
+  },
 
+  "name"  :  {
+              "content": "What's its name?",
+              "next_state": "confirmation"
+  },
+
+  "confirmation": {
+              "content": ", are you sure? [Yes or No]",
+              "response": [
+                "yes",
+                "no"
+              ],
+              "next_state": "congratulations"
+  },
+
+  "congratulations": {
+              "content": "Congratulations to your new pet, ",
+              "next_state": "idle"
+  },
+
+  "idle" : {
+              "content" : "Would you like to...\nShop\tClean\nPlay\tSleep",
+              "next_state" : "idle",
+              "response": [
+                "shop",
+                "clean",
+                "play",
+                "sleep"
+              ]
+  },
+
+  "shop": {
+          "content": "Are you looking for Drinks or Food?",
+          "response": [
+            "drinks",
+            "food"
+          ],
+          "next_state": "shop"
+  },
+
+  "drinks": {
+          "content": "Which drink would you like? [1 2 3]",
+          "next_state": "drinks",
+          "response": [
+            "1",
+            "2",
+            "3"
+          ]
+  },
+
+  "food": {
+          "content": "Which food item would you like? [1 2 3]",
+          "next_state": "food",
+          "response": [
+            "1",
+            "2",
+            "3"
+          ]
+},
+
+  "clean": {
+
+  },
+  "play": {
+
+  },
+  "sleep": {
+
+  }
 }
