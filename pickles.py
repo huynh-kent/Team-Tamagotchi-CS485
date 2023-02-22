@@ -29,8 +29,9 @@ def pickling(form):
     #act.state = (CORPUS[act.state]['next_state'])
     logger.debug(f'current state: {act.state}')
 
+    return act
+
+def save_pickle(form, act):
     # save pickle
     with open(f"users/{form['From']}.pkl", 'wb') as p:
         pickle.dump(act,p)
-
-    return act
