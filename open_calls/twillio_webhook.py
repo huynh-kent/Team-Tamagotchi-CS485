@@ -35,6 +35,6 @@ def handle_request():
     response = process_message(sent_input)
 
     # test
-    send_message(request.form, get_outline())
+    #send_message(request.form, get_tamagotchi())
 
     return json_response( status = "ok" )
