@@ -1,11 +1,6 @@
-import os
-import time
-import sched
-import threading
-
 class Tamagotchi:
     age = 0
-    happiness = 0
+    happiness = 100
     hunger = 100
     thirst = 100
     alive = True
@@ -31,6 +26,12 @@ class Tamagotchi:
         self.hunger -= 5
         self.thirst -= 3
         self.bored += 2
+        self.energy += 2
+
+        if self.hunger < 50 or self.bored > 50 or self.thirst < 50:
+            self.happiness -= 5
+
+        
 
     def get_status(self):
         status = f"""
