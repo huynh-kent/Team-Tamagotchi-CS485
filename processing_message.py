@@ -30,7 +30,7 @@ def process_message(user, sent_input):
         send_message(user.phone, user.tamagotchi.emoji)
         content = CORPUS[user.state]['content']
     elif user.state == 'confirmation':
-        user.tamagotchi.name = sent_input
+        user.tamagotchi.name = sent_input.upper()
         content = f"{(user.tamagotchi.name)+(CORPUS[user.state]['content'])}"
     elif user.state == 'congratulations':
         if sent_input == 'no':
