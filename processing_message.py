@@ -50,6 +50,8 @@ def process_message(user, sent_input):
         else:
             congrats = f"{(CORPUS[user.state]['content'])+(user.tamagotchi.name)}! 🎉🎉🎉"
             user.state = 'idle'
+    else:
+        content = "Please try again"
         
     if user.state == 'idle':
         if sent_input not in CORPUS['idle']['response']:
@@ -85,8 +87,7 @@ def process_message(user, sent_input):
             send_message(user.phone, food_choices.show_choices())
         else:
             pass
-    else:
-        content = "Please try again"
+
             
 
 
