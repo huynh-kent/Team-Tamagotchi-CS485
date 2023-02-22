@@ -13,7 +13,7 @@ all_pets = ['🍏', '🍎','🍐','🍊','🍋','🍌','🍉','🍇','🍓','�
 
 
 class pets:
-    
+    pet_options = []
     def __init__(self):
         self.choices = random.choices(all_pets, k=3)
         #for pet in self.choices:
@@ -22,10 +22,9 @@ class pets:
     def show_choices(self):
         #for count,choice in enumerate(self.choices):
         #    print(f"{choice} --- {self.pet_hunger[count]}")
-        pet_options = []
         pet_string = ''
         for choice in self.choices:
-            pet_options.append(choice)
+            self.pet_options.append(choice)
             pet_string += choice
 
         return pet_string
