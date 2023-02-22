@@ -57,7 +57,7 @@
   },
 
   "drinks": {
-          "content": "Which drink would you like? ( 1 2 3 )",
+          "content": "Which drink would you like? (1 2 3)",
           "next_state": "drinks",
           "response": [
             "1",
@@ -67,7 +67,7 @@
   },
 
   "food": {
-          "content": "Which food item would you like? ( 1 2 3 )",
+          "content": "Which food item would you like? (1 2 3)",
           "next_state": "food",
           "response": [
             "1",
