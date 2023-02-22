@@ -23,7 +23,7 @@ def handle_request():
     user, response = process_message(user, sent_input)
 
     # send message back/game state from send_message_back.py
-    send_message(user.number, response)
+    send_message(user.phone, response)
     # send picture name/url from media.yml
     #picture_name = 'sample-tamagotchi-image'
     #send_picture(request.form, picture_name)
