@@ -1,4 +1,4 @@
-import tamagotchi
+from tamagotchi import Tamagotchi
 
 class actor:
 
@@ -18,4 +18,4 @@ class actor:
         state = new_state
 
     def create_tamagotchi(self, pet):
-        self.tamagotchi = tamagotchi(pet)
+        self.tamagotchi = Tamagotchi(pet)
