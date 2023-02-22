@@ -14,6 +14,7 @@ with open('game_script.json', 'r') as myfile:
 
 pet_choices = pets()
 pet_name = ''
+chosen_pet = ''
 
 def process_message(user, sent_input):
     user.prev_state = user.state
