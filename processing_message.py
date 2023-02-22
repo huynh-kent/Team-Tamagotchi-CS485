@@ -1,5 +1,6 @@
 import random
 import json
+from tools.logging import logger
 
 # open corpus json
 CORPUS = {}
@@ -15,5 +16,8 @@ def process_message(user, sent_input):
         user.state = CORPUS[user.state]['next_state']
     else:
         response = "Please try again"
+
+    # check state
+    logger.debug(user.state)
 
     return (user, response)
