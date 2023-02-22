@@ -22,8 +22,8 @@ def process_message(user, sent_input):
         content = f"{content}"
     elif user.state == 'choose':
         pet_choices = pets()
-        content = json.dumps(CORPUS[user.state]['content'])
-        content = f"{content}"
+        content = f"{json.dumps(CORPUS[user.state]['content'])}"
+        #content = f"{content}"
     elif user.state == 'name':
         pass
     elif user.state == 'confirmation':
