@@ -49,7 +49,7 @@ app.config['JOBS'] = [
         'id': 'my_job',
         'func': time_has_passed,
         'trigger': 'interval',
-        'seconds': 10
+        'seconds': 30
     }
 ]
 scheduler.init_app(app)
