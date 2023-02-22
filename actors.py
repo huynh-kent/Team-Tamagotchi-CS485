@@ -6,6 +6,7 @@ class actor:
         self.phone = phone_number
         self.prev_msgs = []
         self.state = "begin"
+        self.prev_state = ''
         print('this is created:')
         print(self.state)
         self.tamagotchi = None
