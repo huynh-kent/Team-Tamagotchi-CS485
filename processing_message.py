@@ -13,7 +13,7 @@ with open('game_script.json', 'r') as myfile:
     CORPUS = json.loads(myfile.read())
 
 pet_choices = pets()
-pet_name = ''
+pet_name = None
 chosen_pet = ''
 
 def process_message(user, sent_input):
