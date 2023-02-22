@@ -7,7 +7,7 @@
   "choose" : {
               "content": "Choose Your Pet(Dog, Cat):",
               "next_state": "name",
-              "select": {
+              "response": {
                 "1": "",
                 "2": "",
                 "3": ""
