@@ -7,7 +7,7 @@ from pickles import pickling
 from send_message_back import send_message, send_picture
 from processing_message import process_message
 
-from tamagotchi import get_outline # test
+from tamagotchi import get_tamagotchi # test
 
 yml_configs = {}
 BODY_MSGS = []
