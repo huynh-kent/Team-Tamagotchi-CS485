@@ -43,7 +43,7 @@ def process_message(user, sent_input):
     else:
         content = "Please try again"
     if user.state == 'idle':
-        send_message(user.phone, user.tamagotchi.get_outline())
+        send_message(user.phone, user.tamagotchi.draw())
 
 
     #elif sent_input in CORPUS[user.state]['response']:
