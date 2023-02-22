@@ -1,6 +1,9 @@
 {
   "begin" : {
               "content": "Type BEGIN to Start!",
+              "response": [
+                "begin"
+              ],
               "next_state": "choose"
   },
 
