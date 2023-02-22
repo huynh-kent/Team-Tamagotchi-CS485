@@ -16,7 +16,6 @@ class Tamagotchi:
     def __init__(self, emoji):
         self.emoji = emoji
         self.s = sched.scheduler(time.time, time.sleep)
-        self.tick_loop()
         self.s.enter(10, 1, self.tick_loop, (self.s,))
         self.t = threading.Thread(target=self.s.run)
         self.t.start()
