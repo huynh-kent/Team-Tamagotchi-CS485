@@ -19,12 +19,15 @@
 
   "name"  :  {
               "content": "Give it a name",
-              "next_state": "name_confirmation"
+              "next_state": "confirmation"
   },
 
   "confirmation": {
-              "content": "Are you sure? (Yes or No)",
-              "response": ""
+              "content": ", are you sure? (Yes or No)",
+              "response": [
+                "yes",
+                "no"
+              ]
   },
 
   "idle" : {
