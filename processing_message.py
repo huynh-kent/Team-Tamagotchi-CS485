@@ -79,6 +79,8 @@ def process_message(user, sent_input):
             content = f"{user.tamagotchi.name} has quenched {chosen_drink.thirst} thirst from drinking that!"
             user.state = 'idle'
             send_message(user.phone, user.tamagotchi.draw())
+            send_message(user.phone, content)
+            content = CORPUS[user.state]['content']
 
     elif user.state == 'food':
         if sent_input not in CORPUS['food']['response']:
@@ -90,6 +92,8 @@ def process_message(user, sent_input):
             content = f"{user.tamagotchi.name} has satisfied {chosen_food.hunger} hunger points from eating that!"
             user.state = 'idle'
             send_message(user.phone, user.tamagotchi.draw())
+            send_message(user.phone, content)
+            content = CORPUS[user.state]['content']
 
             
 
