@@ -42,7 +42,15 @@ Upon texting the number for the first time, user will see following behavior:
    
 4: True Gameplay
   Now that the game has begun, the normal mechanics of the game will loop through this section: Making sure the pet is fed, clean, happy, and well rested. From this point on, the points for health/food/happy and timers will be started and kept track of until the game is PAUSED/QUIT.
-  *see written notes in discord for typical gameplay and place final draft here*
+    Available visual states the user should be able to see in order to know what their Pet needs!
+      -  💀 (sick,->toilet not cleaned after 5 min),
+        sent with "Your Pet Tamagotchi is Down with The Sickness!"
+       * The user CANNOT play with pet when it is Sick. 
+      - 💤(sleepy/sleeping)
+      - 🥱(bored->happy bar less than 40 pts)
+      -  🤩  (happy, bars full)
+      -💩 (or ascii equivalent(poo, shows up and does NOT leave until cleaned))
+
 
 
 5. Endgame Event
