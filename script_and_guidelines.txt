@@ -46,16 +46,43 @@ Upon texting the number for the first time, user will see following behavior:
       -  💀 (sick,->toilet not cleaned after 5 min),
         sent with "Your Pet Tamagotchi is Down with The Sickness!"
        * The user CANNOT play with pet when it is Sick. 
-      - 💤(sleepy/sleeping)
-      - 🥱(bored->happy bar less than 40 pts)
-      -  🤩  (happy, bars full)
-      -💩 (or ascii equivalent(poo, shows up and does NOT leave until cleaned))
-
-
-
+      - 💤 (sleepy/sleeping)
+      - 🥱 (bored->happy bar less than 40 pts)
+      - 🤩 (happy, bars full)
+      - 💩 (*or ascii equivalent* (poo, shows up after 3 snacks and does NOT leave until cleaned)
+      - 💦 (*or ascii equivalent* (pee, shows up after 3 drinks and does NOT leave until cleaned)
+      Health 100 pts: 
+          ++: Health can be recovered by:
+              + feeding medicine when sick....--> +15 pts instant
+              + taking naps...................--> +5 pts instant
+              + reaching full happiness bar...--> +3pts instant
+          --: Health decreases when:
+              - sickness occur................--> -10 pts instant, -3pts/min after
+              - happiness bar not full........--> -1 pt / min
+              - hungry (bar empty 2 mins).....--> -1 pt / min
+              - too tired.....................--> -1 pt / min
+                 *must have at least 2 20 min naps a day*
+                 
+      Happiness 100 pts:
+          ++: Happiness grows when:
+              + playing games.................--> +5 pts instant
+              + awaken from nap...............--> +2 pts instant
+              + clean potty asap (x < 3mins)..--> +3 pts instant
+          --: happiness decreases when: 
+              - not played with enough........--> -3pts/min (must play every 20 mins
+              - pee/poo not cleaned 3 mins....--> -1pt / min
+              - hungry too long(empty 2min)...--> -1pt / min
+              
+     Hunger 100 pts:
+         ++: Hunger is satiated when:
+              + tamagotchi is fed.............--> 20 pts instant 
+         --: Hunger worsens when:
+              - time pass.....................--> -5 pts / 10 mins
+              - playing games.................--> -2 pts / game played
+              
 5. Endgame Event
   Depending on how users play the game, we will have a branching off! Either the pet dies or it evolves into its final form c:
-  A.) PERISH EVENT: Occurs when Sick for longer than 10 mins(game units, doesn't have to be minutes)
+    A.) PERISH EVENT: Occurs when Sick for longer than 10 mins(game units, doesn't have to be minutes)
                     Occurs when Hunger Empty for longer than 10 mins
                     occurs when Happy bar is empty for longer than 10 mins
         If Pet perishes, users will experience the following behavior:
@@ -65,7 +92,7 @@ Upon texting the number for the first time, user will see following behavior:
                           >>user enters YES of NO
                          No matter what their answer is, the game will be reset.
                          
-  B.) EVOLUTION EVENT: Occurs when all bars have been kept full for 10+ mins
+    B.) EVOLUTION EVENT: Occurs when all bars have been kept full for 10+ mins
                     (potential for random gift of evolve stone?)
                     
         The users will see the following behavior once their pet is ready to evolve.
