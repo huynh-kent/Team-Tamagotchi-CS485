@@ -154,6 +154,7 @@ def process_message(user, sent_input):
         if sent_input not in CORPUS['sleep']['response']:
             content = CORPUS[user.state]['content']
         else:
+            send_message(user.phone, f"{user.tamagotchi.name} is now asleep!")
             content = CORPUS[user.state]['content']
             t = 10
             def countdown(t):
@@ -165,7 +166,7 @@ def process_message(user, sent_input):
                     t -= 1
 
             countdown(int(t))
-            send_message(user.phone, f"Your pet has woken up!")
+            send_message(user.phone, f"{user.tamagotchi.name} has woken up!")
             user.tamagotchi.energy += 99
             user.state = 'idle'
             send_message(user.phone, user.tamagotchi.draw())
