@@ -1,4 +1,5 @@
 from tamagotchi import Tamagotchi
+from guessmoji import Guessmoji
 
 class actor:
 
@@ -7,15 +8,17 @@ class actor:
         self.prev_msgs = []
         self.state = "begin"
         self.prev_state = ''
-#        print('this is created:')
-#        print(self.state)
         self.tamagotchi = None
+        self.game = None
 
     def save_msg(self, msg):
         self.prev_msgs.append(msg)
 
     def change_state(self, new_state):
-        state = new_state
+        self.state = new_state
 
     def create_tamagotchi(self, pet):
         self.tamagotchi = Tamagotchi(pet)
+
+    def clear_game(self):
+        self.game = None

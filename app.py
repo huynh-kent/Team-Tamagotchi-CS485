@@ -43,6 +43,7 @@ def time_has_passed():
                 pickle.dump(act,b)
         except Exception:
             print(f"{file} failed to pass time")
+
 # configure
 app.config['JOBS'] = [
     {
