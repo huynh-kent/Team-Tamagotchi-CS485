@@ -125,13 +125,21 @@ def process_message(user, sent_input):
                     send_message(user.phone, "Incorrect Answer, Try Again!")
                 content = user.game.current_word
         elif sent_input == 'start':
-            if not user.game:
+            if user.tamagotchi.energy < 10:
+                send_message(user.phone, "Not enough energy to play! Try sleeping!")
+                user.state = 'idle'
+                send_message(user.phone, user.tamagotchi.draw())
+                content = CORPUS[user.state]['content']
+
+            elif not user.game:
                 send_message(user.phone, "Starting a game of Guessmoji")
                 user.game = Guessmoji()
                 user.game.select_word()
+                user.tamagotchi.energy -= 10
+                content = user.game.current_word
             else:
                 send_message(user.phone, "Incorrect Answer, Try Again!")
-            content = user.game.current_word
+                content = user.game.current_word
         elif sent_input == 'stop':
             user.state = 'idle'
             send_message(user.phone, "Ending game, thank you for playing Guessmoji!")
@@ -155,6 +163,7 @@ def process_message(user, sent_input):
 
             countdown(int(t))
             send_message(user.phone, f"Your pet has woken up!")
+            user.tamagotchi.energy += 99
             user.state = 'idle'
             send_message(user.phone, user.tamagotchi.draw())
             send_message(user.phone, content)
