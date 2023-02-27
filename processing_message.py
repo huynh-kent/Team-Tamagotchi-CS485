@@ -98,8 +98,29 @@ def process_message(user, sent_input):
             send_message(user.phone, user.tamagotchi.draw())
             send_message(user.phone, content)
             content = CORPUS[user.state]['content']
-
             
+    elif user.state == 'sleep':
+        if sent_input not in CORPUS['sleep']['response']:
+            content = CORPUS[user.state]['content']
+        else:
+            content = CORPUS[user.state]['content']
+            t = 10
+            def countdown(t):
+
+                while t:
+                    mins, secs = divmod(t,60)
+                    timer = '{:02d}:{:02d}'.format(mins, secs)
+                    send_message(user.phone, f"{timer}")
+                    time.sleep(1)
+                    t -= 1
+
+            countdown(int(t))
+            send_message(user.phone, f"Your pet has woken up!")
+            user.state = 'idle'
+            send_message(user.phone, user.tamagotchi.draw())
+            send_message(user.phone, content)
+            content = CORPUS[user.state]['content']
+            send_message(user.phone, user.state)            
 
 
             
