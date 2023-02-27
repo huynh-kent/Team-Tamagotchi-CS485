@@ -11,7 +11,7 @@ class Tamagotchi:
     is_sick = False
     potty_clean = True
     potty_times: int = 0
-
+    happiness_emoji = "🙂"
 
     def __init__(self, emoji):
         self.emoji = emoji
@@ -84,7 +84,7 @@ Energy: {self.energy}
         tamagotchi_outline = f"""
 \n
 🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
-🌸                                                  🌸
+🌸{self.happiness_emoji}                                            🌸
 🌸                                                  🌸
 🌸                                                  🌸
 🌸                                                  🌸
