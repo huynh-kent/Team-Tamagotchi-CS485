@@ -5,7 +5,7 @@ from pets_ import pets
 from drinks_ import drinks, drink
 from foods_ import foods, food
 import sched
-from test_sending_message import send_message
+from send_message_back import send_message
 from guessmoji import Guessmoji
 import time
 
