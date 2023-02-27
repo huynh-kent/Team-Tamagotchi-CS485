@@ -27,7 +27,6 @@ def pickling(form):
     # set new state
     #act.state = (CORPUS[act.state]['next_state'])
 
-
     return act
 
 # save pickle/user data
