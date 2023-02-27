@@ -83,6 +83,7 @@ def process_message(user, sent_input):
             send_message(user.phone, user.tamagotchi.draw())
             send_message(user.phone, content)
             content = CORPUS[user.state]['content']
+            send_message(user.phone, content)
 
     elif user.state == 'food':
         if sent_input not in CORPUS['food']['response']:
@@ -98,6 +99,7 @@ def process_message(user, sent_input):
             send_message(user.phone, user.tamagotchi.draw())
             send_message(user.phone, content)
             content = CORPUS[user.state]['content']
+            send_message(user.phone, content)
             
     elif user.state == 'sleep':
         if sent_input not in CORPUS['sleep']['response']:
@@ -120,7 +122,7 @@ def process_message(user, sent_input):
             send_message(user.phone, user.tamagotchi.draw())
             send_message(user.phone, content)
             content = CORPUS[user.state]['content']
-            send_message(user.phone, user.state)            
+            send_message(user.phone, content)           
 
 
             
