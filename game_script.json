@@ -88,6 +88,10 @@
           ]
   },
   "sleep": {
-
+          "content": "Your pet is tired(type nap)",
+          "next_state": "sleep",
+          "response": [
+            "nap"
+          ]
   }
 }

@@ -1,0 +1,111 @@
+Upon texting the number for the first time, user will see following behavior:
+  1: Welcome Event
+  "Welcome to the SMS Tamagotchi Game! You are about to embark on the mythical journey of parental ineptitude!
+  Please look upon our selection of eggs filled with wonder. Select an egg and your parental destiny shall be revealed!"
+      << show picture off ascii eggs
+    "Before you can choose - Please answer the following question."
+       a) "Do you like spicy, sour, or sweet candy?"
+      >> take in answer, save to decide pet!
+     
+     "Your fate is sealed. You have chosen....."
+     >> show ascii picture of spicy, sweet, or sour egg
+     ***It takes 3 mins for the egg to hatch.***
+     "The <<spicy/sour/sweet>> Egg! It will soon be hatching.... Check your new baby status by typing "STATUS".
+        <<time x<2:30 min ---> "Egg still cold."
+        <<time x<1:30 min ---> "Warming up!"
+        <<time x<30 secs ----> "Hatching soon!!!!"
+     
+            *** return to this ***
+            Pet X = SPICY, SWEET, SOUR (add names when we choose ascii sets)
+
+            SPICY==>BAT asci ppictures (bored, sleepy, sick, happy)
+            SWEET==>LADYBUG asci ppictures (bored, sleepy, sick, happy)
+            SOUR==>OCTOPUS asci ppictures (bored, sleepy, sick, happy)
+            *** (NOTE: we do not have to have happy/sad/sick/sleepy/mad versions of all these characters. We should send a picture of each chatacter upon status change with an EMOJI that shows their emotion as it reflects the game Bars(health, hunger, happy))
+  
+ 2: Hatching Event
+ "Your X has hatched! Give it a name and lets play!"
+     >> user type in a name for pet
+     << send pic of happy ascii
+     "Hello <<name>>. Grow up good and strong!"
+     << send loading ascii with sms saying "Setting up your SMS Tamagotchi Experience..."
+      
+  
+3: Rules and Intro Event
+  << Send sms with a set of simple rules:
+    - "Pay Attention to your pets Hunger, Health, and Happiness!
+      << Send sms photo for each meter
+    - "To keep your pet Full, feed it when it is hungry! To keep your pet Happy and Healthy, play games, give it naps and keep it clean! If your pet is not Clean or Overtired, it will become Sick and PERISH! When your pet PERISHES, it is GAME OVER and you will never see it grow up :c So be very careful!"
+   << send SMS of pet in Best Status: All bars full, clean toilet
+   The Game has now officially begun!
+   
+   
+4: True Gameplay
+  Now that the game has begun, the normal mechanics of the game will loop through this section: Making sure the pet is fed, clean, happy, and well rested. From this point on, the points for health/food/happy and timers will be started and kept track of until the game is PAUSED/QUIT.
+    Available visual states the user should be able to see in order to know what their Pet needs!
+      -  💀 (sick,->toilet not cleaned after 5 min),
+        sent with "Your Pet Tamagotchi is Down with The Sickness!"
+       * The user CANNOT play with pet when it is Sick. 
+      - 💤 (sleepy/sleeping)
+      - 🥱 (bored->happy bar less than 40 pts)
+      - 🤩 (happy, bars full)
+      - 💩 (*or ascii equivalent* (poo, shows up after 3 snacks and does NOT leave until cleaned)
+      - 💦 (*or ascii equivalent* (pee, shows up after 3 drinks and does NOT leave until cleaned)
+      Health 100 pts: 
+          ++: Health can be recovered by:
+              + feeding medicine when sick....--> +15 pts instant
+              + taking naps...................--> +5 pts instant
+              + reaching full happiness bar...--> +3pts instant
+          --: Health decreases when:
+              - sickness occur................--> -10 pts instant, -3pts/min after
+              - happiness bar not full........--> -1 pt / min
+              - hungry (bar empty 2 mins).....--> -1 pt / min
+              - too tired.....................--> -1 pt / min
+                 *must have at least 2 20 min naps a day*
+                 
+      Happiness 100 pts:
+          ++: Happiness grows when:
+              + playing games.................--> +5 pts instant
+              + awaken from nap...............--> +2 pts instant
+              + clean potty asap (x < 3mins)..--> +3 pts instant
+          --: happiness decreases when: 
+              - not played with enough........--> -3pts/min (must play every 20 mins
+              - pee/poo not cleaned 3 mins....--> -1pt / min
+              - hungry too long(empty 2min)...--> -1pt / min
+              
+     Hunger 100 pts:
+         ++: Hunger is satiated when:
+              + tamagotchi is fed.............--> 20 pts instant 
+         --: Hunger worsens when:
+              - time pass.....................--> -5 pts / 10 mins
+              - playing games.................--> -2 pts / game played
+              
+5. Endgame Event
+  Depending on how users play the game, we will have a branching off! Either the pet dies or it evolves into its final form c:
+    A.) PERISH EVENT: Occurs when Sick for longer than 10 mins(game units, doesn't have to be minutes)
+                    Occurs when Hunger Empty for longer than 10 mins
+                    occurs when Happy bar is empty for longer than 10 mins
+        If Pet perishes, users will experience the following behavior:
+            -send sms "Oh no... Oh dear... It looks lke your <<name>> Tamagotchi has Perished from <<sickness, starvation, boredom>>...
+            - sms send: "<<name>> OBITUARY:
+                          Your beloved pet has crossed the rainbow bridge. Either you were parentally challenged, or you hated your pet. Will you take the journey of parenthood seriously next time? Y or N"
+                          >>user enters YES of NO
+                         No matter what their answer is, the game will be reset.
+                         
+    B.) EVOLUTION EVENT: Occurs when all bars have been kept full for 10+ mins
+                    (potential for random gift of evolve stone?)
+                    
+        The users will see the following behavior once their pet is ready to evolve.
+          -send sms with an excited ascii(or exclamation point)
+          "Oh..? What's this..? ...... It looks like your Tamagotchi is ready to evolve to its Final Form!"
+          - Depending on the tamagotchi the user chose in the beginning of the game, the SMS should send an ascii art of the final form of the creature, which will be decided based on spicy,sweet or sour!
+          >> SMS send photo of final form of pet
+
+          Spicy:
+            - "Your Bat Tamagotchi has evolved into a CUNNING VAMPIRE! Will it be bloodthirsty or a wierdo like Edward Cullen? We don't know, but at least you helped it to survive through childhood! Congratulations!!!"
+            
+          Sweet: 
+          - "Your LadyBug Tamagotchi has evolved into LOVELY CUPID! Will it have the best interest of each lover in mind or will it play God with the fates of mortal hearts? We don't know, but at least you helped it to survive through childhood! Congratulations!!!"
+          
+          Sour:
+            "Your Octopus Tamagotchi has evolved into ELDRITCH HORROR CTHULU! Will it stay hidden and slumbering under the ocean's depths for millenia or will it awaken and unleash a wrath unto mankind unlike nothing anyone has ever seen? We don't know, but at least you helped it to survive through childhood! Congratulations!!!"

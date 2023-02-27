@@ -94,6 +94,7 @@ def process_message(user, sent_input):
             send_message(user.phone, content)
             content = CORPUS[user.state]['content']
             recreate_choices(pet_choices, drink_choices, food_choices)
+            send_message(user.phone, content)
 
     elif user.state == 'food':
         if sent_input not in CORPUS['food']['response']:
@@ -136,6 +137,29 @@ def process_message(user, sent_input):
             send_message(user.phone, user.tamagotchi.draw())
             user.clear_game()
             content = CORPUS[user.state]['content']
+            send_message(user.phone, content)
+            
+    elif user.state == 'sleep':
+        if sent_input not in CORPUS['sleep']['response']:
+            content = CORPUS[user.state]['content']
+        else:
+            content = CORPUS[user.state]['content']
+            t = 10
+            def countdown(t):
+
+                while t:
+                    mins, secs = divmod(t,60)
+                    timer = '{:02d}:{:02d}'.format(mins, secs)
+                    time.sleep(1)
+                    t -= 1
+
+            countdown(int(t))
+            send_message(user.phone, f"Your pet has woken up!")
+            user.state = 'idle'
+            send_message(user.phone, user.tamagotchi.draw())
+            send_message(user.phone, content)
+            content = CORPUS[user.state]['content']
+            send_message(user.phone, content)           
 
     # check state
     logger.debug(f'State After: {user.state}')
