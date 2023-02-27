@@ -5,7 +5,7 @@ from pets_ import pets
 from drinks_ import drinks, drink
 from foods_ import foods, food
 import sched
-from send_message_back import send_message
+from test_sending_message import send_message
 from guessmoji import Guessmoji
 import time
 
@@ -27,6 +27,7 @@ with open('game_script.json', 'r') as myfile:
 
 
 def process_message(user, sent_input):
+    logger.debug(f'State Before: {user.state}')
 
     user.prev_state = user.state
     user.state = CORPUS[user.state]['next_state']   
@@ -78,6 +79,8 @@ def process_message(user, sent_input):
                 send_message(user.phone, drink_choices.show_choices())
             elif sent_input == 'food':
                 send_message(user.phone, food_choices.show_choices())
+        else:
+            content = CORPUS[user.state]['content']
 
     elif user.state == 'drinks':
         if sent_input not in CORPUS['drinks']['response']:
@@ -94,7 +97,6 @@ def process_message(user, sent_input):
             send_message(user.phone, content)
             content = CORPUS[user.state]['content']
             recreate_choices(pet_choices, drink_choices, food_choices)
-            send_message(user.phone, content)
 
     elif user.state == 'food':
         if sent_input not in CORPUS['food']['response']:
@@ -121,24 +123,30 @@ def process_message(user, sent_input):
                     user.game.select_word()
                 else:
                     send_message(user.phone, "Incorrect Answer, Try Again!")
-                content = CORPUS[user.state][user.game.current_word]
-
+                content = user.game.current_word
         elif sent_input == 'start':
-            if not user.game:
+            if user.tamagotchi.energy < 10:
+                send_message(user.phone, "Not enough energy to play! Try sleeping!")
+                user.state = 'idle'
+                send_message(user.phone, user.tamagotchi.draw())
+                content = CORPUS[user.state]['content']
+
+            elif not user.game:
                 send_message(user.phone, "Starting a game of Guessmoji")
                 user.game = Guessmoji()
                 user.game.select_word()
+                user.tamagotchi.energy -= 10
+                content = user.game.current_word
             else:
                 send_message(user.phone, "Incorrect Answer, Try Again!")
-            content = CORPUS[user.state][user.game.current_word]
+                content = user.game.current_word
         elif sent_input == 'stop':
-            user.state == 'idle'
+            user.state = 'idle'
             send_message(user.phone, "Ending game, thank you for playing Guessmoji!")
             send_message(user.phone, user.tamagotchi.draw())
             user.clear_game()
             content = CORPUS[user.state]['content']
-            send_message(user.phone, content)
-            
+
     elif user.state == 'sleep':
         if sent_input not in CORPUS['sleep']['response']:
             content = CORPUS[user.state]['content']
@@ -155,11 +163,33 @@ def process_message(user, sent_input):
 
             countdown(int(t))
             send_message(user.phone, f"Your pet has woken up!")
+            user.tamagotchi.energy += 99
             user.state = 'idle'
             send_message(user.phone, user.tamagotchi.draw())
             send_message(user.phone, content)
             content = CORPUS[user.state]['content']
-            send_message(user.phone, content)           
+            send_message(user.phone, content)    
+
+    elif user.state == 'clean':
+        if sent_input not in CORPUS['clean']['response']:
+            content = CORPUS[user.state]['content']
+        elif sent_input == 'yes':
+            if user.tamagotchi.potty_clean:
+                send_message(user.phone, "There is no mess to clean right now!")
+            else:
+                send_message(user.phone, "Cleaning up after your pets mess!")
+                user.tamagotchi.potty_clean = True
+                user.tamagotchi.potty_times = 0
+            user.state = 'idle'
+            send_message(user.phone, user.tamagotchi.draw())
+            content = CORPUS[user.state]['content']
+
+        elif sent_input == 'no':
+            send_message(user.phone, "input = no")
+            user.state = 'idle'
+            send_message(user.phone, user.tamagotchi.draw())
+            content = CORPUS[user.state]['content']
+            
 
     # check state
     logger.debug(f'State After: {user.state}')
