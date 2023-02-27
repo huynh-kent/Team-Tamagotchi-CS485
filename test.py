@@ -1,11 +1,11 @@
 from test_sending_message import send_message
-from processing_message import process_message
+from test_processing_message import process_message
 from actors import actor
 
 print('Hello, Welcome to Tamagotchi what is your #Number?')
 name = input()
 
-print(f"Alright lets get start!")
+print(f"Alright Type anything to begin!")
 user = actor(name)
 
 while True:
