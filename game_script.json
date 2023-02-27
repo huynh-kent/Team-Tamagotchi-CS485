@@ -77,10 +77,16 @@
 },
 
   "clean": {
+          "content": "If it seems like your pet has a mess, type YES to clean up after them! NO if there is no mess!",
+          "next_state": "idle",
+          "response": [
+            "yes",
+            "no"
+          ]
+},
 
-  },
   "play": {
-          "content": "Welcome to Guessmoji, look at the combiniation of emojis and try to guess the corresponding english word! (Type STOP to end game)",
+          "content": "Welcome to Guessmoji, look at the combiniation of emojis and try to guess the corresponding english word! (Type START to start game, STOP to end game)",
           "next_state": "play",
           "response": [
             "stop",

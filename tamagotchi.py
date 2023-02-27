@@ -8,9 +8,9 @@ class Tamagotchi:
     energy: int = 100
     name = ''
     in_need = False
-    #is_sick = False
-    #potty_clean = True
-    #potty_times: int = 0
+    is_sick = False
+    potty_clean = True
+    potty_times: int = 0
 
 
     def __init__(self, emoji):
@@ -52,8 +52,8 @@ class Tamagotchi:
 
         if self.hunger <= 0 or self.bored >= 100 or self.thirst <= 0 or self.happiness <= 0:
             self.alive = False
-       #''' if self.potty_times = 3:
-        #    self.potty_clean = False
+        if self.potty_times >= 3:
+            self.potty_clean = False
          #   if potty_clean = false for more than 5 mins
           #         self.is_sick = True
            # if self.potty_clean = False:
@@ -76,6 +76,9 @@ Energy: {self.energy}
         return status
 
     def draw(self):
+        emoji_space_filler="      "
+        if not self.potty_clean: potty = "💩" 
+        else: potty = emoji_space_filler
         tamagotchi_outline = f"""
 \n
 🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
@@ -84,7 +87,7 @@ Energy: {self.energy}
 🌸                                                  🌸
 🌸                                                  🌸
 🌸                                                  🌸
-🌸                     {self.emoji}                       🌸
+🌸                     {self.emoji}{potty}                       🌸
 🌸                                                  🌸
 🌸                                                  🌸
 🌸                                                  🌸

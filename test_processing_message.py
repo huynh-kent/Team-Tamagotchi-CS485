@@ -27,6 +27,7 @@ with open('game_script.json', 'r') as myfile:
 
 
 def process_message(user, sent_input):
+    logger.debug(f'State Before: {user.state}')
 
     user.prev_state = user.state
     user.state = CORPUS[user.state]['next_state']   
@@ -78,6 +79,8 @@ def process_message(user, sent_input):
                 send_message(user.phone, drink_choices.show_choices())
             elif sent_input == 'food':
                 send_message(user.phone, food_choices.show_choices())
+        else:
+            content = CORPUS[user.state]['content']
 
     elif user.state == 'drinks':
         if sent_input not in CORPUS['drinks']['response']:
@@ -120,8 +123,7 @@ def process_message(user, sent_input):
                     user.game.select_word()
                 else:
                     send_message(user.phone, "Incorrect Answer, Try Again!")
-                content = CORPUS[user.state][user.game.current_word]
-
+                content = user.game.current_word
         elif sent_input == 'start':
             if not user.game:
                 send_message(user.phone, "Starting a game of Guessmoji")
@@ -129,13 +131,55 @@ def process_message(user, sent_input):
                 user.game.select_word()
             else:
                 send_message(user.phone, "Incorrect Answer, Try Again!")
-            content = CORPUS[user.state][user.game.current_word]
+            content = user.game.current_word
         elif sent_input == 'stop':
-            user.state == 'idle'
+            user.state = 'idle'
             send_message(user.phone, "Ending game, thank you for playing Guessmoji!")
             send_message(user.phone, user.tamagotchi.draw())
             user.clear_game()
             content = CORPUS[user.state]['content']
+
+    elif user.state == 'sleep':
+        if sent_input not in CORPUS['sleep']['response']:
+            content = CORPUS[user.state]['content']
+        else:
+            content = CORPUS[user.state]['content']
+            t = 10
+            def countdown(t):
+
+                while t:
+                    mins, secs = divmod(t,60)
+                    timer = '{:02d}:{:02d}'.format(mins, secs)
+                    time.sleep(1)
+                    t -= 1
+
+            countdown(int(t))
+            send_message(user.phone, f"Your pet has woken up!")
+            user.state = 'idle'
+            send_message(user.phone, user.tamagotchi.draw())
+            send_message(user.phone, content)
+            content = CORPUS[user.state]['content']
+            send_message(user.phone, content)    
+
+    elif user.state == 'clean':
+        if sent_input not in CORPUS['clean']['response']:
+            print('fjlksjkjkdjklsjlds1232832903829082309')
+            content = CORPUS[user.state]['content']
+        elif sent_input == 'yes':
+            print('fjlksjkjkdjklsjlds1232832903829082309')
+            if user.tamagotchi.potty_clean is True:
+                send_message(user.phone, "There is no mess to clean right now!")
+            else:
+                send_message(user.phone, "Cleaning up after your pets mess!")
+            user.state = 'idle'
+            send_message(user.phone, user.tamagotchi.draw())
+            content = CORPUS[user.state]['content']
+
+        elif sent_input == 'no':
+                user.state = 'idle'
+                send_message(user.phone, user.tamagotchi.draw())
+                content = CORPUS[user.state]['content']
+            
 
     # check state
     logger.debug(f'State After: {user.state}')
