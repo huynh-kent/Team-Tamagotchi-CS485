@@ -7,11 +7,11 @@ class Tamagotchi:
     bored: int = 0
     energy: int = 100
     name = ''
-    in_need = False
+    '''in_need = False
     is_sick = False
     potty_clean = True
     potty_times: int = 0
-    
+    '''
 
     def __init__(self, emoji):
         self.emoji = emoji
@@ -52,16 +52,16 @@ class Tamagotchi:
 
         if self.hunger <= 0 or self.bored >= 100 or self.thirst <= 0 or self.happiness <= 0:
             self.alive = False
-        if self.potty_times = 3:
+       ''' if self.potty_times = 3:
             self.potty_clean = False
-            '''if potty_clean = false for more than 5 mins
-                   self.is_sick = True'''
+            if potty_clean = false for more than 5 mins
+                   self.is_sick = True
             if self.potty_clean = False:
                 self.is_sick = True  
-                '''if is_sick for longer than ten mins:
-                        self.alive = False'''
-         '''how do I keep track of how long pet it sick?'''
-        
+                if is_sick for longer than ten mins:
+                        self.alive = False
+         how do I keep track of how long pet it sick?
+        '''
 
     def get_status(self):
         status = f"""
