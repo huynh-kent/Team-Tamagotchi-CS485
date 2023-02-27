@@ -55,5 +55,5 @@ class Guessmoji:
             return True
         return False
     
-game = Guessmoji()
-game.select_word()
+#game = Guessmoji()
+#game.select_word()
