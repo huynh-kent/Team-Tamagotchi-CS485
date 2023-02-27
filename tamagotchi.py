@@ -89,7 +89,7 @@ Energy: {self.energy}
 🌸                                                  🌸
 🌸                                                  🌸
 🌸                                                  🌸
-🌸                     {self.emoji}{potty}               🌸
+🌸                     {self.emoji}{potty}                 🌸
 🌸                                                  🌸
 🌸                                                  🌸
 🌸                                                  🌸
