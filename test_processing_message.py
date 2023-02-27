@@ -58,6 +58,10 @@ def process_message(user, sent_input):
             send_message(user.phone, user.tamagotchi.emoji)
             content = CORPUS['name']['content']
         else:
+            send_message(user.phone, """LOADING...
+
+██████████████]99% 
+""")
             congrats = f"{(CORPUS[user.state]['content'])+(user.tamagotchi.name)}! 🎉🎉🎉"
             user.state = 'idle'
 
