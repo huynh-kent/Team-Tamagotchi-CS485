@@ -1,74 +1,59 @@
-word_set = { '🔥🥔': 'hot potato',
-             '👶🚿': 'baby shower',
-             '🌽🍞' : 'corn bread',
-             '🍎🥧':'apple pie',
+import random
+
+word_set = { '🔥🥔': 'hotpotato',
+             '👶🚿': 'babyshower',
+             '🌽🍞' : 'cornbread',
+             '🍎🥧':'applepie',
              '🧠⚰️':'braindead',
-             '🦷🧚🏻':'tooth fairy',
+             '🦷🧚🏻':'toothfairy',
              '🦻💍':'earring',
              '👨‍🍳📧':'cookie',
-             '👽🧃':'alien juice',
-             '💭🐲':'imagine dragons',
+             '👽🧃':'alienjuice',
+             '💭🐲':'imaginedragons',
              '🐱🐠':'catfish',
              '👄👄':'tulips',
              '🐝🍃':'beliefs',
              '🕸️👁️':'website',
              '🪶🏋️‍♂️':'featherweight',
-             '✂️👔':'cut ties',
-             '🌊🧂':'sea salt',
-             '⛷️😷':'ski mask',
+             '✂️👔':'cutties',
+             '🌊🧂':'seasalt',
+             '⛷️😷':'skimask',
              '🥇🎟️':'golden ticket',
-             '🪝➖🚰':'hook line sinker', 
              '🌃♣️':'nightclub',
-             '🫶✉️':'love letter',
-             '💍🐻':'ring bearer',
-             '⭐️🐠':'star fish',
+             '🫶✉️':'loveletter',
+             '💍🐻':'ringbearer',
+             '⭐️🐠':'starfish',
              '💡🏠':'lighthouse',
-             '🚽📝':'toilet paper',
+             '🚽📝':'toiletpaper',
              '4️⃣🐜🐜':'france',
              '🐝🔛🗣️':'beyonce',
              '📰 📸':'newsflash',
              '🐜🧔':'antman',
-             '🍕🛖':'pizza hut',
+             '🍕🛖':'pizzahut',
              }
 
 class Guessmoji:
-    word_set = { '🔥🥔': 'hot potato',          
-             '👶🚿': 'baby shower',
-             '🌽🍞' : 'corn bread',
-             '🍎🥧':'apple pie',
-             '🧠⚰️':'braindead',
-             '🦷🧚🏻':'tooth fairy',
-             '🦻💍':'earring',
-             '👨‍🍳📧':'cookie',
-             '👽🧃':'alien juice',
-             '💭🐲':'imagine dragons',
-             '🐱🐠':'catfish',
-             '👄👄':'tulips',
-             '🐝🍃':'beliefs',
-             '🕸️👁️':'website',
-             '🪶🏋️‍♂️':'featherweight',
-             '✂️👔':'cut ties',
-             '🌊🧂':'sea salt',
-             '⛷️😷':'ski mask',
-             '🥇🎟️':'golden ticket',
-             '🪝➖🚰':'hook line sinker', 
-             '🌃♣️':'nightclub',
-             '🫶✉️':'love letter',
-             '💍🐻':'ring bearer',
-             '⭐️🐠':'star fish',
-             '💡🏠':'lighthouse',
-             '🚽📝':'toilet paper',
-             '4️⃣🐜🐜':'france',
-             '🐝🔛🗣️':'beyonce',
-             '📰 📸':'newsflash',
-             '🐜🧔':'antman',
-             '🍕🛖':'pizza hut',           
-             }
-    
+    current_word = ''
+    current_answer = ''
+
     def __init__(self):
-        pass
+        self.word_pool = word_set
+        self.score = 0
 
-    def start_game():
-        pass
-        
+    def select_word(self):
+        word = random.choice(list(self.word_pool))
+        print(word)
+        answer = self.word_pool.pop(word)
+        print(answer)
 
+        return word, answer
+    
+    def check_guess(self, guess):
+        guess = guess.replace(' ','')
+        if guess.lower() == self.current_answer:
+            self.score += 1
+            return True
+        return False
+    
+game = Guessmoji()
+game.select_word()

@@ -80,7 +80,12 @@
 
   },
   "play": {
-
+          "content": "Welcome to Guessmoji, look at the combiniation of emojis and try to guess the corresponding english word! (Type STOP to end game)",
+          "next_state": "play",
+          "response": [
+            "stop",
+            "start"
+          ]
   },
   "sleep": {
 
