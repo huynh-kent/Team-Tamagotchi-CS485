@@ -7,24 +7,24 @@ class Tamagotchi:
     bored: int = 0
     energy: int = 100
     name = ''
-    '''in_need = False
-    is_sick = False
-    potty_clean = True
-    potty_times: int = 0
-    '''
+    in_need = False
+    #is_sick = False
+    #potty_clean = True
+    #potty_times: int = 0
+
 
     def __init__(self, emoji):
         self.emoji = emoji
-        var_list = [self.age, self.happiness, self.hunger, self.thirst, self.bored, self.energy, self.is_sick, self.potty_clean, self.potty_times]
+        var_list = [self.age, self.happiness, self.hunger, self.thirst, self.bored, self.energy] #'''self.is_sick, self.potty_clean, self.potty_times'''
         def num_limit(num, minimum=0, maximum=100):
             return max(min(num, maximum), minimum)
         map(num_limit, var_list)
 
-    '''def get_sick(self):
-        self.is_sick = True
+    #'''def get_sick(self):
+     #   self.is_sick = True
         
-    def check_potty(self):
-        if self.potty_clean = False **How can i make this only turn false after a certain time tick?'''
+    #def check_potty(self):
+     #   if self.potty_clean = False **How can i make this only turn false after a certain time tick?'''
         
     def eat(self, food):
         self.hunger += food.hunger
@@ -52,16 +52,16 @@ class Tamagotchi:
 
         if self.hunger <= 0 or self.bored >= 100 or self.thirst <= 0 or self.happiness <= 0:
             self.alive = False
-       ''' if self.potty_times = 3:
-            self.potty_clean = False
-            if potty_clean = false for more than 5 mins
-                   self.is_sick = True
-            if self.potty_clean = False:
-                self.is_sick = True  
-                if is_sick for longer than ten mins:
-                        self.alive = False
-         how do I keep track of how long pet it sick?
-        '''
+       #''' if self.potty_times = 3:
+        #    self.potty_clean = False
+         #   if potty_clean = false for more than 5 mins
+          #         self.is_sick = True
+           # if self.potty_clean = False:
+            #    self.is_sick = True  
+             #   if is_sick *for longer than ten mins*:
+              #          self.alive = False
+        # how do I keep track of how long pet it sick?
+        #'''
 
     def get_status(self):
         status = f"""
