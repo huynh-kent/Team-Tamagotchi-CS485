@@ -163,11 +163,9 @@ def process_message(user, sent_input):
 
     elif user.state == 'clean':
         if sent_input not in CORPUS['clean']['response']:
-            print('fjlksjkjkdjklsjlds1232832903829082309')
             content = CORPUS[user.state]['content']
         elif sent_input == 'yes':
-            print('fjlksjkjkdjklsjlds1232832903829082309')
-            if user.tamagotchi.potty_clean is True:
+            if user.tamagotchi.potty_clean:
                 send_message(user.phone, "There is no mess to clean right now!")
             else:
                 send_message(user.phone, "Cleaning up after your pets mess!")
@@ -176,9 +174,10 @@ def process_message(user, sent_input):
             content = CORPUS[user.state]['content']
 
         elif sent_input == 'no':
-                user.state = 'idle'
-                send_message(user.phone, user.tamagotchi.draw())
-                content = CORPUS[user.state]['content']
+            send_message(user.phone, "input = no")
+            user.state = 'idle'
+            send_message(user.phone, user.tamagotchi.draw())
+            content = CORPUS[user.state]['content']
             
 
     # check state

@@ -78,7 +78,7 @@
 
   "clean": {
           "content": "If it seems like your pet has a mess, type YES to clean up after them! NO if there is no mess!",
-          "next_state": "idle",
+          "next_state": "clean",
           "response": [
             "yes",
             "no"

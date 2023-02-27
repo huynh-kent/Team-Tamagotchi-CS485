@@ -29,10 +29,14 @@ class Tamagotchi:
     def eat(self, food):
         self.hunger += food.hunger
         self.potty_times += 1
+        if self.potty_times >= 3:
+            self.potty_clean = False
 
     def drink(self, drink):
         self.thirst += drink.thirst
         self.potty_times +=1
+        if self.potty_times >= 3:
+            self.potty_clean = False
 
     def activity(self, activity):
         self.energy -= activity.energy
@@ -52,8 +56,6 @@ class Tamagotchi:
 
         if self.hunger <= 0 or self.bored >= 100 or self.thirst <= 0 or self.happiness <= 0:
             self.alive = False
-        if self.potty_times >= 3:
-            self.potty_clean = False
          #   if potty_clean = false for more than 5 mins
           #         self.is_sick = True
            # if self.potty_clean = False:
