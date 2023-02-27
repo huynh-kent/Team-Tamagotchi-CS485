@@ -79,8 +79,10 @@ def process_message(user, sent_input):
             user.state = sent_input
             content = CORPUS[user.state]['content']
             if sent_input == 'drinks':
+                recreate_choices(pet_choices, drink_choices, food_choices)
                 send_message(user.phone, drink_choices.show_choices())
             elif sent_input == 'food':
+                recreate_choices(pet_choices, drink_choices, food_choices)
                 send_message(user.phone, food_choices.show_choices())
         else:
             content = CORPUS[user.state]['content']
@@ -99,7 +101,6 @@ def process_message(user, sent_input):
             send_message(user.phone, user.tamagotchi.draw())
             send_message(user.phone, content)
             content = CORPUS[user.state]['content']
-            recreate_choices(pet_choices, drink_choices, food_choices)
 
     elif user.state == 'food':
         if sent_input not in CORPUS['food']['response']:
@@ -115,7 +116,6 @@ def process_message(user, sent_input):
             send_message(user.phone, user.tamagotchi.draw())
             send_message(user.phone, content)
             content = CORPUS[user.state]['content']
-            recreate_choices(pet_choices, drink_choices, food_choices)
 
     elif user.state == 'play':
         if sent_input not in CORPUS['play']['response']:
