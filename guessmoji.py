@@ -41,12 +41,13 @@ class Guessmoji:
         self.score = 0
 
     def select_word(self):
-        word = random.choice(list(self.word_pool))
-        print(word)
-        answer = self.word_pool.pop(word)
-        print(answer)
+        self.current_word = random.choice(list(self.word_pool))
+        #self.current_word = word
+        #print(word)
+        self.current_answer = self.word_pool.pop(self.current_word)
+        #print(answer)
 
-        return word, answer
+        return self.current_word, self.current_answer
     
     def check_guess(self, guess):
         guess = guess.replace(' ','')
