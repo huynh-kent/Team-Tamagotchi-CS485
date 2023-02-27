@@ -17,6 +17,7 @@ def send_message(number, body):
     return json_response(sid = message.sid)"""
     print(body)
 
+"""
 def send_picture(number, picture_name):
     message = g.sms_client.messages.create(
                     from_ = yml_configs['twillio']['phone_number'],
@@ -24,3 +25,4 @@ def send_picture(number, picture_name):
                     to = number,
     )
     return json_response(sid = message.sid)
+"""
