@@ -15,14 +15,17 @@ class Tamagotchi:
 
     def __init__(self, emoji):
         self.emoji = emoji
-        var_list = [self.age, self.happiness, self.hunger, self.thirst, self.bored, self.energy] #'''self.is_sick, self.potty_clean, self.potty_times'''
-        def num_limit(num, minimum=0, maximum=100):
-            return max(min(num, maximum), minimum)
-        map(num_limit, var_list)
 
     #'''def get_sick(self):
      #   self.is_sick = True
-        
+    def limit_num(self, num, minimum=0, maximum=100):
+        return max(min(num, maximum), minimum)
+
+    """#var_list = [self.age, self.happiness, self.hunger, self.thirst, self.bored, self.energy] #'''self.is_sick, self.potty_clean, self.potty_times'''
+    def num_limit(num, minimum=0, maximum=100):
+        return max(min(num, maximum), minimum)
+    map(num_limit, var_list)
+    """
     #def check_potty(self):
      #   if self.potty_clean = False **How can i make this only turn false after a certain time tick?'''
         
@@ -52,10 +55,19 @@ class Tamagotchi:
             self.happiness -= 5
             self.in_need = True
         else:
+            self.happiness += 5
             self.in_need = False
 
         if self.hunger <= 0 or self.bored >= 100 or self.thirst <= 0 or self.happiness <= 0:
             self.alive = False
+
+        self.age = self.limit_num(self.age)
+        self.hunger = self.limit_num(self.hunger)
+        self.thirst = self.limit_num(self.thirst)
+        self.bored = self.limit_num(self.bored)
+        self.happiness = self.limit_num(self.happiness)
+
+        
          #   if potty_clean = false for more than 5 mins
           #         self.is_sick = True
            # if self.potty_clean = False:
