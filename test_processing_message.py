@@ -169,6 +169,8 @@ def process_message(user, sent_input):
                 send_message(user.phone, "There is no mess to clean right now!")
             else:
                 send_message(user.phone, "Cleaning up after your pets mess!")
+                user.tamagotchi.potty_clean = True
+                user.tamagotchi.potty_times = 0
             user.state = 'idle'
             send_message(user.phone, user.tamagotchi.draw())
             content = CORPUS[user.state]['content']
