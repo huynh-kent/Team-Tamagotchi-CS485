@@ -167,7 +167,7 @@ def process_message(user, sent_input):
             user.tamagotchi.sleep()
             user.state = 'idle'
             send_message(user.phone, user.tamagotchi.draw())
-            send_message(user.phone, f"{user.tamagotchi.name} has woken up!")
+            send_message(user.phone, f"{user.tamagotchi.name} has woken up and restored all of its energy!")
             content = CORPUS[user.state]['content']
 
     elif user.state == 'clean':
