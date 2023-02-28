@@ -31,25 +31,35 @@ class Tamagotchi:
         
     def eat(self, food):
         self.hunger += food.hunger
+        self.hunger = self.limit_num(self.hunger)
+
         self.potty_times += 1
         if self.potty_times >= 3:
             self.potty_clean = False
 
     def drink(self, drink):
         self.thirst += drink.thirst
+        self.thirst = self.limit_num(self.thirst)
+
         self.potty_times +=1
         if self.potty_times >= 3:
             self.potty_clean = False
 
-    def activity(self, activity):
-        self.energy -= activity.energy
-        self.bored -= activity.bored
+    def play(self):
+        self.energy -= 10
+        self.bored = 0
+        
+        self.energy = self.limit_num(self.energy)
+
+    def sleep(self):
+        self.energy = 100
 
     def time_tick(self):
         self.age += 0.1
         self.hunger -= 5
         self.thirst -= 3
         self.bored += 2
+        self.energy -= 1
 
         if self.hunger < 50 or self.bored > 50 or self.thirst < 50:
             self.happiness -= 5
@@ -66,8 +76,9 @@ class Tamagotchi:
         self.thirst = self.limit_num(self.thirst)
         self.bored = self.limit_num(self.bored)
         self.happiness = self.limit_num(self.happiness)
+        self.energy = self.limit_num(self.energy)
 
-        
+
          #   if potty_clean = false for more than 5 mins
           #         self.is_sick = True
            # if self.potty_clean = False:

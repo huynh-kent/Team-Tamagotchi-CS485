@@ -138,7 +138,7 @@ def process_message(user, sent_input):
                 send_message(user.phone, "Starting a game of Guessmoji")
                 user.game = Guessmoji()
                 user.game.select_word()
-                user.tamagotchi.energy -= 10
+                user.tamagotchi.play()
                 content = user.game.current_word
             else:
                 send_message(user.phone, "Incorrect Answer, Try Again!")
@@ -167,7 +167,7 @@ def process_message(user, sent_input):
 
             countdown(int(t))
             send_message(user.phone, f"{user.tamagotchi.name} has woken up!")
-            user.tamagotchi.energy += 99
+            user.tamagotchi.sleep()
             user.state = 'idle'
             send_message(user.phone, user.tamagotchi.draw())
             send_message(user.phone, content)
