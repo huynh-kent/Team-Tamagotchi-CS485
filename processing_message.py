@@ -59,6 +59,7 @@ def process_message(user, sent_input):
             send_message(user.phone, CORPUS[user.state]['content'])
             send_message(user.phone, f"{user.tamagotchi.name} has died!!!")
             content = "Reply anything to restart"
+            user.state = 'begin'
             
         if sent_input not in CORPUS['idle']['response']:
             send_message(user.phone, user.tamagotchi.draw())
