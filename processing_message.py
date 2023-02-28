@@ -143,7 +143,7 @@ def process_message(user, sent_input):
             else:
                 send_message(user.phone, "Incorrect Answer, Try Again!")
                 content = user.game.current_word
-        elif sent_input == 'end':
+        elif sent_input == 'finish':
             user.state = 'idle'
             send_message(user.phone, "Ending game, thank you for playing Guessmoji!")
             send_message(user.phone, user.tamagotchi.draw())
