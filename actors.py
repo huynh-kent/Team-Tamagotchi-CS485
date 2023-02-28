@@ -16,6 +16,9 @@ class actor:
         self.food_choices = foods()
         self.drink_choices = drinks()
         self.pet_choices = pets()
+        self.drink = None
+        self.food = None
+        self.pet = None
 
     def save_msg(self, msg):
         self.prev_msgs.append(msg)
@@ -28,6 +31,11 @@ class actor:
 
     def clear_game(self):
         self.game = None
+
+    def clear_choices(self):
+        self.drink = None
+        self.food = None
+        self.pet = None
 
     def recreate_choices(self):
         self.pet_choices = pets()

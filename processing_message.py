@@ -81,11 +81,11 @@ def process_message(user, sent_input):
             content = CORPUS[user.state]['content']
             send_message(user.phone, user.drink_choices.show_choices())
         else:
-            chosen_drink = drink(user.drink_choices.drink_options[int(sent_input)-1])
-            send_message(user.phone, chosen_drink.emoji)
-            user.tamagotchi.drink(chosen_drink)
-            content = f"{user.tamagotchi.name} has quenched {chosen_drink.thirst} thirst from drinking that!"
-            user.drink_choices.clear_options()
+            user.drink = drink(user.drink_choices.drink_options[int(sent_input)-1])
+            send_message(user.phone, user.drink.emoji)
+            user.tamagotchi.drink(user.drink)
+            content = f"{user.tamagotchi.name} has quenched {user.drink.thirst} thirst from drinking that!"
+            user.clear_choices()
             user.state = 'idle'
             send_message(user.phone, f"{user.tamagotchi.name} is drinking...")
             send_message(user.phone, user.tamagotchi.draw())
@@ -97,11 +97,11 @@ def process_message(user, sent_input):
             content = CORPUS[user.state]['content']
             send_message(user.phone, user.food_choices.show_choices())
         else:
-            chosen_food = food(user.food_choices.food_options[int(sent_input)-1])
-            send_message(user.phone, chosen_food.emoji)
-            user.tamagotchi.eat(chosen_food)
-            content = f"{user.tamagotchi.name} has satisfied {chosen_food.hunger} hunger points from eating that!"
-            user.food_choices.clear_options()
+            user.food = food(user.food_choices.food_options[int(sent_input)-1])
+            send_message(user.phone, user.food.emoji)
+            user.tamagotchi.eat(user.food)
+            content = f"{user.tamagotchi.name} has satisfied {user.food.hunger} hunger points from eating that!"
+            user.clear_choices()
             user.state = 'idle'
             send_message(user.phone, f"{user.tamagotchi.name} is eating...")
             send_message(user.phone, user.tamagotchi.draw())
