@@ -14,8 +14,8 @@ class actor:
         self.tamagotchi = None
         self.game = None
         self.food_choices = foods()
-        self.drink_choices = ()
-        self.pet_choices = ()
+        self.drink_choices = drinks()
+        self.pet_choices = pets()
 
     def save_msg(self, msg):
         self.prev_msgs.append(msg)
