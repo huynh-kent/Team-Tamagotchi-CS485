@@ -9,17 +9,6 @@ from send_message_back import send_message
 from guessmoji import Guessmoji
 import time
 
-def recreate_choices(pet, drink, food):
-    pet = pets()
-    drink = drinks()
-    food = foods()
-
-    return pet, drink , food
-
-pet_choices = pets()
-drink_choices = drinks()
-food_choices = foods()
-
 # open corpus json
 CORPUS = {}
 with open('game_script.json', 'r') as myfile:
@@ -40,13 +29,13 @@ def process_message(user, sent_input):
 
     elif user.state == 'choose':
         content = f"{(CORPUS[user.state]['content'])}"
-        send_message(user.phone, pet_choices.show_choices())
+        send_message(user.phone, user.pet_choices.show_choices())
 
     elif user.state == 'name':
-        user.create_tamagotchi(pet_choices.pet_options[int(sent_input)-1])
+        user.create_tamagotchi(user.pet_choices.pet_options[int(sent_input)-1])
         send_message(user.phone, user.tamagotchi.emoji)
         content = CORPUS[user.state]['content']
-        recreate_choices(pet_choices, drink_choices, food_choices)
+        user.recreate_choices()
 
     elif user.state == 'confirmation':
         user.tamagotchi.name = sent_input.upper()
@@ -79,20 +68,20 @@ def process_message(user, sent_input):
             user.state = sent_input
             content = CORPUS[user.state]['content']
             if sent_input == 'drinks':
-                recreate_choices(pet_choices, drink_choices, food_choices)
-                send_message(user.phone, drink_choices.show_choices())
+                user.recreate_choices()
+                send_message(user.phone, user.drink_choices.show_choices())
             elif sent_input == 'food':
-                recreate_choices(pet_choices, drink_choices, food_choices)
-                send_message(user.phone, food_choices.show_choices())
+                user.recreate_choices()
+                send_message(user.phone, user.food_choices.show_choices())
         else:
             content = CORPUS[user.state]['content']
 
     elif user.state == 'drinks':
         if sent_input not in CORPUS['drinks']['response']:
             content = CORPUS[user.state]['content']
-            send_message(user.phone, drink_choices.show_choices())
+            send_message(user.phone, user.drink_choices.show_choices())
         else:
-            chosen_drink = drink(drink_choices.drink_options[int(sent_input)-1])
+            chosen_drink = drink(user.drink_choices.drink_options[int(sent_input)-1])
             send_message(user.phone, chosen_drink.emoji)
             user.tamagotchi.drink(chosen_drink)
             content = f"{user.tamagotchi.name} has quenched {chosen_drink.thirst} thirst from drinking that!"
@@ -105,9 +94,9 @@ def process_message(user, sent_input):
     elif user.state == 'food':
         if sent_input not in CORPUS['food']['response']:
             content = CORPUS[user.state]['content']
-            send_message(user.phone, food_choices.show_choices())
+            send_message(user.phone, user.food_choices.show_choices())
         else:
-            chosen_food = food(food_choices.food_options[int(sent_input)-1])
+            chosen_food = food(user.food_choices.food_options[int(sent_input)-1])
             send_message(user.phone, chosen_food.emoji)
             user.tamagotchi.eat(chosen_food)
             content = f"{user.tamagotchi.name} has satisfied {chosen_food.hunger} hunger points from eating that!"

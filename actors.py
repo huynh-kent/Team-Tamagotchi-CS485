@@ -1,5 +1,8 @@
 from tamagotchi import Tamagotchi
 from guessmoji import Guessmoji
+from foods_ import foods
+from drinks_ import drinks
+from pets_ import pets
 
 class actor:
 
@@ -10,6 +13,9 @@ class actor:
         self.prev_state = ''
         self.tamagotchi = None
         self.game = None
+        self.food_choices = foods()
+        self.drink_choices = ()
+        self.pet_choices = ()
 
     def save_msg(self, msg):
         self.prev_msgs.append(msg)
@@ -22,3 +28,8 @@ class actor:
 
     def clear_game(self):
         self.game = None
+
+    def recreate_choices(self):
+        self.pet_choices = pets()
+        self.drink_choices = drinks()
+        self.food_choices = foods()
