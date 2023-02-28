@@ -69,8 +69,10 @@ def process_message(user, sent_input):
             content = CORPUS[user.state]['content']
             if sent_input == 'drinks':
                 user.recreate_choices()
+                user.drink_choices.clear_options()
                 send_message(user.phone, user.drink_choices.show_choices())
             elif sent_input == 'food':
+                user.food_choices.clear_options()
                 user.recreate_choices()
                 send_message(user.phone, user.food_choices.show_choices())
         else:
@@ -85,7 +87,6 @@ def process_message(user, sent_input):
             send_message(user.phone, user.drink.emoji)
             user.tamagotchi.drink(user.drink)
             content = f"{user.tamagotchi.name} has quenched {user.drink.thirst} thirst from drinking that!"
-            user.clear_choices()
             user.state = 'idle'
             send_message(user.phone, f"{user.tamagotchi.name} is drinking...")
             send_message(user.phone, user.tamagotchi.draw())
@@ -101,7 +102,6 @@ def process_message(user, sent_input):
             send_message(user.phone, user.food.emoji)
             user.tamagotchi.eat(user.food)
             content = f"{user.tamagotchi.name} has satisfied {user.food.hunger} hunger points from eating that!"
-            user.clear_choices()
             user.state = 'idle'
             send_message(user.phone, f"{user.tamagotchi.name} is eating...")
             send_message(user.phone, user.tamagotchi.draw())
