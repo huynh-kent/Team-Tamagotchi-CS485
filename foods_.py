@@ -17,10 +17,12 @@ class foods:
     choices = {}
 
     def __init__(self):
-        self.choices = random.sample(all_foods, 3)
+        pass
 
     def show_choices(self):
+        self.choices = random.sample(all_foods, 3)
         food_string = ''
+        self.food_options = []
         for choice in self.choices:
             self.food_options.append(choice)
             food_string += choice

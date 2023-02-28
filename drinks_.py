@@ -9,10 +9,12 @@ class drinks:
     choices = {}
 
     def __init__(self):
-        self.choices = random.sample(all_drinks, 3)
+        pass
 
     def show_choices(self):
+        self.choices = random.sample(all_drinks, 3)
         drink_string = ''
+        self.drink_options = []
         for choice in self.choices:
             self.drink_options.append(choice)
             drink_string += choice

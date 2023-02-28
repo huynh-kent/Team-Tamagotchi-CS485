@@ -35,7 +35,6 @@ def process_message(user, sent_input):
         user.create_tamagotchi(user.pet_choices.pet_options[int(sent_input)-1])
         send_message(user.phone, user.tamagotchi.emoji)
         content = CORPUS[user.state]['content']
-        user.recreate_choices()
 
     elif user.state == 'confirmation':
         user.tamagotchi.name = sent_input.upper()
@@ -75,12 +74,8 @@ def process_message(user, sent_input):
             user.state = sent_input
             content = CORPUS[user.state]['content']
             if sent_input == 'drinks':
-                user.recreate_choices()
-                user.drink_choices.clear_options()
                 send_message(user.phone, user.drink_choices.show_choices())
             elif sent_input == 'food':
-                user.food_choices.clear_options()
-                user.recreate_choices()
                 send_message(user.phone, user.food_choices.show_choices())
         else:
             content = CORPUS[user.state]['content']
