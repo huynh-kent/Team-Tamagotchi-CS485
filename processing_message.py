@@ -138,9 +138,9 @@ def process_message(user, sent_input):
         elif sent_input == 'finish':
             user.state = 'idle'
             send_message(user.phone, "Ending game, thank you for playing Guessmoji!")
+            user.tamagotchi.play()
             send_message(user.phone, user.tamagotchi.draw())
             user.clear_game()
-            user.tamagotchi.play()
             content = CORPUS[user.state]['content']
 
     elif user.state == 'sleep':
