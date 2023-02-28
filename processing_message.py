@@ -178,7 +178,7 @@ def process_message(user, sent_input):
             content = CORPUS[user.state]['content']
 
         elif sent_input == 'no':
-            send_message(user.phone, "input = no")
+            send_message(user.phone, "Not cleaning up...")
             user.state = 'idle'
             send_message(user.phone, user.tamagotchi.draw())
             content = CORPUS[user.state]['content']
