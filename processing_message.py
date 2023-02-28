@@ -157,13 +157,11 @@ def process_message(user, sent_input):
                     t -= 1
 
             countdown(int(t))
-            send_message(user.phone, f"{user.tamagotchi.name} has woken up!")
             user.tamagotchi.sleep()
             user.state = 'idle'
             send_message(user.phone, user.tamagotchi.draw())
-            send_message(user.phone, content)
+            send_message(user.phone, f"{user.tamagotchi.name} has woken up!")
             content = CORPUS[user.state]['content']
-            send_message(user.phone, content)    
 
     elif user.state == 'clean':
         if sent_input not in CORPUS['clean']['response']:
