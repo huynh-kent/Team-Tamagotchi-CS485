@@ -18,8 +18,10 @@ def handle_request():
     logger.debug(f'State Before: {user.state}')
     logger.debug(f"Text: {request.form['Body']}")
     sent_input = str(request.form['Body']).lower()
+    sent_input = sent_input.replace(' ','')
     
     user, response = process_message(user, sent_input)
+    
 
     # send message back/game state from send_message_back.py
     send_message(user.phone, response)
