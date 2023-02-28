@@ -40,13 +40,12 @@ def process_message(user, sent_input):
 
     elif user.state == 'choose':
         content = f"{(CORPUS[user.state]['content'])}"
-        send_message(user.phone, pet_choices.show_choices())
+        send_message(user.phone, user.pet_choices.show_choices())
 
     elif user.state == 'name':
-        user.create_tamagotchi(pet_choices.pet_options[int(sent_input)-1])
+        user.create_tamagotchi(user.pet_choices.pet_options[int(sent_input)-1])
         send_message(user.phone, user.tamagotchi.emoji)
         content = CORPUS[user.state]['content']
-        recreate_choices(pet_choices, drink_choices, food_choices)
 
     elif user.state == 'confirmation':
         user.tamagotchi.name = sent_input.upper()
@@ -65,6 +64,13 @@ def process_message(user, sent_input):
             user.state = 'idle'
 
     if user.state == 'idle':
+    #    if not user.tamagotchi.alive:
+    #        send_message(user.phone, user.tamagotchi.draw())
+    #        send_message(user.phone, CORPUS[user.state]['content'])
+    #        send_message(user.phone, f"{user.tamagotchi.name} has died!!!")
+    #        content = "Reply anything to restart"
+    #        user.state = 'begin'
+            
         if sent_input not in CORPUS['idle']['response']:
             send_message(user.phone, user.tamagotchi.draw())
             try: send_message(user.phone, congrats) 
@@ -79,23 +85,21 @@ def process_message(user, sent_input):
             user.state = sent_input
             content = CORPUS[user.state]['content']
             if sent_input == 'drinks':
-                recreate_choices(pet_choices, drink_choices, food_choices)
-                send_message(user.phone, drink_choices.show_choices())
+                send_message(user.phone, user.drink_choices.show_choices())
             elif sent_input == 'food':
-                recreate_choices(pet_choices, drink_choices, food_choices)
-                send_message(user.phone, food_choices.show_choices())
+                send_message(user.phone, user.food_choices.show_choices())
         else:
             content = CORPUS[user.state]['content']
 
     elif user.state == 'drinks':
         if sent_input not in CORPUS['drinks']['response']:
             content = CORPUS[user.state]['content']
-            send_message(user.phone, drink_choices.show_choices())
+            send_message(user.phone, user.drink_choices.show_choices())
         else:
-            chosen_drink = drink(drink_choices.drink_options[int(sent_input)-1])
-            send_message(user.phone, chosen_drink.emoji)
-            user.tamagotchi.drink(chosen_drink)
-            content = f"{user.tamagotchi.name} has quenched {chosen_drink.thirst} thirst from drinking that!"
+            user.drink = drink(user.drink_choices.drink_options[int(sent_input)-1])
+            send_message(user.phone, user.drink.emoji)
+            user.tamagotchi.drink(user.drink)
+            content = f"{user.tamagotchi.name} has quenched {user.drink.thirst} thirst from drinking that!"
             user.state = 'idle'
             send_message(user.phone, f"{user.tamagotchi.name} is drinking...")
             send_message(user.phone, user.tamagotchi.draw())
@@ -105,12 +109,12 @@ def process_message(user, sent_input):
     elif user.state == 'food':
         if sent_input not in CORPUS['food']['response']:
             content = CORPUS[user.state]['content']
-            send_message(user.phone, food_choices.show_choices())
+            send_message(user.phone, user.food_choices.show_choices())
         else:
-            chosen_food = food(food_choices.food_options[int(sent_input)-1])
-            send_message(user.phone, chosen_food.emoji)
-            user.tamagotchi.eat(chosen_food)
-            content = f"{user.tamagotchi.name} has satisfied {chosen_food.hunger} hunger points from eating that!"
+            user.food = food(user.food_choices.food_options[int(sent_input)-1])
+            send_message(user.phone, user.food.emoji)
+            user.tamagotchi.eat(user.food)
+            content = f"{user.tamagotchi.name} has satisfied {user.food.hunger} hunger points from eating that!"
             user.state = 'idle'
             send_message(user.phone, f"{user.tamagotchi.name} is eating...")
             send_message(user.phone, user.tamagotchi.draw())
@@ -138,16 +142,16 @@ def process_message(user, sent_input):
                 send_message(user.phone, "Starting a game of Guessmoji")
                 user.game = Guessmoji()
                 user.game.select_word()
-                user.tamagotchi.play()
                 content = user.game.current_word
             else:
                 send_message(user.phone, "Incorrect Answer, Try Again!")
                 content = user.game.current_word
-        elif sent_input == 'end':
+        elif sent_input == 'finish':
             user.state = 'idle'
             send_message(user.phone, "Ending game, thank you for playing Guessmoji!")
             send_message(user.phone, user.tamagotchi.draw())
             user.clear_game()
+            user.tamagotchi.play()
             content = CORPUS[user.state]['content']
 
     elif user.state == 'sleep':
@@ -166,13 +170,11 @@ def process_message(user, sent_input):
                     t -= 1
 
             countdown(int(t))
-            send_message(user.phone, f"{user.tamagotchi.name} has woken up!")
             user.tamagotchi.sleep()
             user.state = 'idle'
             send_message(user.phone, user.tamagotchi.draw())
-            send_message(user.phone, content)
+            send_message(user.phone, f"{user.tamagotchi.name} has woken up and restored all of its energy!")
             content = CORPUS[user.state]['content']
-            send_message(user.phone, content)    
 
     elif user.state == 'clean':
         if sent_input not in CORPUS['clean']['response']:
@@ -189,7 +191,7 @@ def process_message(user, sent_input):
             content = CORPUS[user.state]['content']
 
         elif sent_input == 'no':
-            send_message(user.phone, "input = no")
+            send_message(user.phone, "Not cleaning up...")
             user.state = 'idle'
             send_message(user.phone, user.tamagotchi.draw())
             content = CORPUS[user.state]['content']
