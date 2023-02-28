@@ -1,47 +1,25 @@
 Upon texting the number for the first time, user will see following behavior:
   1: Welcome Event
-  "Welcome to the SMS Tamagotchi Game! You are about to embark on the mythical journey of parental ineptitude!
-  Please look upon our selection of eggs filled with wonder. Select an egg and your parental destiny shall be revealed!"
-      << show picture off ascii eggs
-    "Before you can choose - Please answer the following question."
-       a) "Do you like spicy, sour, or sweet candy?"
-      >> take in answer, save to decide pet!
-     
-     "Your fate is sealed. You have chosen....."
-     >> show ascii picture of spicy, sweet, or sour egg
-     ***It takes 3 mins for the egg to hatch.***
-     "The <<spicy/sour/sweet>> Egg! It will soon be hatching.... Check your new baby status by typing "STATUS".
-        <<time x<2:30 min ---> "Egg still cold."
-        <<time x<1:30 min ---> "Warming up!"
-        <<time x<30 secs ----> "Hatching soon!!!!"
-     
-            *** return to this ***
-            Pet X = SPICY, SWEET, SOUR (add names when we choose ascii sets)
-
-            SPICY==>BAT asci ppictures (bored, sleepy, sick, happy)
-            SWEET==>LADYBUG asci ppictures (bored, sleepy, sick, happy)
-            SOUR==>OCTOPUS asci ppictures (bored, sleepy, sick, happy)
-            *** (NOTE: we do not have to have happy/sad/sick/sleepy/mad versions of all these characters. We should send a picture of each chatacter upon status change with an EMOJI that shows their emotion as it reflects the game Bars(health, hunger, happy))
+  "Welcome to the SMS Tamagotchi Game! You are about to embark on the mythical journey of parental ineptitude!"
+  "Type BEGIN to to start
+          << user types in start, prepare to choose pet
   
- 2: Hatching Event
- "Your X has hatched! Give it a name and lets play!"
-     >> user type in a name for pet
-     << send pic of happy ascii
-     "Hello <<name>>. Grow up good and strong!"
-     << send loading ascii with sms saying "Setting up your SMS Tamagotchi Experience..."
-      
-  
-3: Rules and Intro Event
-  << Send sms with a set of simple rules:
-    - "Pay Attention to your pets Hunger, Health, and Happiness!
-      << Send sms photo for each meter
-    - "To keep your pet Full, feed it when it is hungry! To keep your pet Happy and Healthy, play games, give it naps and keep it clean! If your pet is not Clean or Overtired, it will become Sick and PERISH! When your pet PERISHES, it is GAME OVER and you will never see it grow up :c So be very careful!"
-   << send SMS of pet in Best Status: All bars full, clean toilet
+ 2: Choosing Event
+    >> SMS send 3 emoji options of pets
+    >> "Choose your pet [1 2 3]"
+     >> user type in a number for pet
+     << send pic of chosen pet
+     "What's its name?"
+     >> user type in name for pet
+     "<<PET_NAME>>, Are you sure? [Yes or No]"
+     >> user types no, try again. User types yes, moving on
+     << send loading ascii SMS
+     << send SMS of pet in Best Status: All bars full, clean toilet
    The Game has now officially begun!
    
    
 4: True Gameplay
-  Now that the game has begun, the normal mechanics of the game will loop through this section: Making sure the pet is fed, clean, happy, and well rested. From this point on, the points for health/food/happy and timers will be started and kept track of until the game is PAUSED/QUIT.
+  Now that the game has begun, the normal mechanics of the game will loop through this section: Making sure the pet is fed, clean, happy, and well rested. From this point on, the points for health/food/happy and timers will be started and kept track of.
     Available visual states the user should be able to see in order to know what their Pet needs!
       -  💀 (sick,->toilet not cleaned after 5 min),
         sent with "Your Pet Tamagotchi is Down with The Sickness!"
