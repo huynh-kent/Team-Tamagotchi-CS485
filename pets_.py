@@ -23,6 +23,9 @@ class pets:
 
         return pet_string
         
+    def clear_options(self):
+        self.pet_options = []        
+
 class pet:
     emoji = ''
 

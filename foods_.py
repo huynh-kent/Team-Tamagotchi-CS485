@@ -35,7 +35,8 @@ class foods:
             food_options.append(food_option)
         return food_options
         
-
+    def clear_options(self):
+        self.food_options = []
         
 class food:
     emoji = ''

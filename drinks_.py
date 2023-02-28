@@ -27,6 +27,9 @@ class drinks:
             drink_options.append(drink_option)
             print(drink_option.emoji, drink_option.thirst, end=' ')
         return drink_options
+    
+    def clear_options(self):
+        self.drink_options = []
         
 
         

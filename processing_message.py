@@ -85,6 +85,7 @@ def process_message(user, sent_input):
             send_message(user.phone, chosen_drink.emoji)
             user.tamagotchi.drink(chosen_drink)
             content = f"{user.tamagotchi.name} has quenched {chosen_drink.thirst} thirst from drinking that!"
+            user.drink_choices.clear_options()
             user.state = 'idle'
             send_message(user.phone, f"{user.tamagotchi.name} is drinking...")
             send_message(user.phone, user.tamagotchi.draw())
@@ -100,6 +101,7 @@ def process_message(user, sent_input):
             send_message(user.phone, chosen_food.emoji)
             user.tamagotchi.eat(chosen_food)
             content = f"{user.tamagotchi.name} has satisfied {chosen_food.hunger} hunger points from eating that!"
+            user.food_choices.clear_options()
             user.state = 'idle'
             send_message(user.phone, f"{user.tamagotchi.name} is eating...")
             send_message(user.phone, user.tamagotchi.draw())
