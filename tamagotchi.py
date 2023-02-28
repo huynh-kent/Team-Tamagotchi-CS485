@@ -68,7 +68,11 @@ class Tamagotchi:
             self.happiness += 5
             self.in_need = False
 
-        if self.hunger <= 0 or self.bored >= 100 or self.thirst <= 0 or self.happiness <= 0:
+        if self.happiness > 75: self.happiness_emoji = "🙂"
+        elif self.happiness > 50: self.happiness_emoji = "😐"
+        elif self.happiness > 25: self.happiness_emoji = "☹️"
+        elif self.happiness > 1: 
+            self.happiness_emoji = "💀"
             self.alive = False
 
         self.age = self.limit_num(self.age)
